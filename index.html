@@ -17,7 +17,7 @@
 :root{
   --bg:#FFF8FA; --paper:#FFFFFF; --ink:#3A2A33; --muted:#86717D; --rule:#F5E1EA;
   --accent:#C4507F; --accent-soft:#FDEAF2; --todo:#B4570C; --grid:rgba(196,80,127,.05); --accent2:#A78BDB; --accent3:#EFA477; --on-accent:#3A2A33;
-  --fill:#F9CADD; --fill2:#DCD0F5; --fill3:#CFE8E0;
+  --fill:#F9CADD; --fill2:#DCD0F5; --fill3:#CFE8E0; --fill4:#FBD9C4;
   --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
   --body:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -25,11 +25,11 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#1E171C; --paper:#2A2027; --ink:#F7ECF1; --muted:#C4ADB9; --rule:#40323B;
   --accent:#F6B3CF; --accent-soft:#3E2A35; --todo:#F0A35E; --grid:rgba(246,179,207,.04); --accent2:#CDB8F5; --accent3:#F5C29E; --on-accent:#2A1F26;
-  --fill:#F3B9D0; --fill2:#CDBDF0; --fill3:#B9DDD1; color-scheme:dark}}
+  --fill:#F3B9D0; --fill2:#CDBDF0; --fill3:#B9DDD1; --fill4:#F6C9AA; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#1E171C; --paper:#2A2027; --ink:#F7ECF1; --muted:#C4ADB9; --rule:#40323B;
   --accent:#F6B3CF; --accent-soft:#3E2A35; --todo:#F0A35E; --grid:rgba(246,179,207,.04); --accent2:#CDB8F5; --accent3:#F5C29E; --on-accent:#2A1F26;
-  --fill:#F3B9D0; --fill2:#CDBDF0; --fill3:#B9DDD1; color-scheme:dark}
+  --fill:#F3B9D0; --fill2:#CDBDF0; --fill3:#B9DDD1; --fill4:#F6C9AA; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
@@ -306,16 +306,31 @@ body{background-image:none;padding-block:0}
 .stat:nth-child(3){background:color-mix(in srgb,var(--fill3) 35%,var(--paper))}
 .stat:nth-child(4){background:color-mix(in srgb,var(--accent3) 18%,var(--paper))}
 .side nav button[aria-current="page"]{color:var(--ink)}
+
+.facts-grid .fact.big:nth-child(6){background:var(--fill4)}
+/* Collapsible sidebar (desktop) */
+.collapse-btn,.expand-btn{align-items:center;justify-content:center;gap:6px;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:6px;cursor:pointer;font:500 .85rem var(--body)}
+.collapse-btn{display:inline-flex;width:30px;height:30px;padding:0;flex:none}
+.collapse-btn svg,.expand-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.collapse-btn:hover,.expand-btn:hover{border-color:var(--accent);color:var(--accent)}
+.expand-btn{display:none;position:fixed;z-index:30;top:max(16px,env(safe-area-inset-top,0px));left:max(16px,env(safe-area-inset-left,0px));padding:8px 12px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+body.side-collapsed .layout{grid-template-columns:minmax(0,1fr);max-width:1000px}
+body.side-collapsed .side{display:none}
+body.side-collapsed .expand-btn{display:inline-flex}
+body.side-collapsed .content{padding-top:72px}
+@media (max-width:900px){.collapse-btn,.expand-btn{display:none!important}body.side-collapsed .side{display:flex}body.side-collapsed .content{padding-top:24px}}
 </style>
 </head>
 <body>
 
 
 <div class="layout">
+  <button class="expand-btn" id="expandBtn" type="button" aria-label="Show sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
   <aside class="side" id="side">
     <div class="side-top">
       <a class="brand" href="#about"><span class="brand-name">Jiya Bhogal</span><span class="brand-role">Mechatronics &amp; Biomedical Engineering</span></a>
       <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="sideNav">Menu</button>
+      <button class="collapse-btn" id="collapseBtn" type="button" aria-label="Hide sidebar" title="Hide sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
     </div>
     <div class="side-body" id="sideNav">
       <nav aria-label="Sections"><ul id="nav"></ul></nav>
@@ -1043,6 +1058,10 @@ body{background-image:none;padding-block:0}
     const a=[...document.querySelectorAll('#'+f.dataset.go+' article')].find(x=>x.querySelector('h3')&&x.querySelector('h3').textContent.startsWith(f.dataset.find));
     if(a){const d=a.querySelector('details');if(d)d.open=true;setTimeout(()=>a.scrollIntoView({block:'start'}),30);}
   }));
+  const setCollapsed=c=>{document.body.classList.toggle('side-collapsed',c);try{localStorage.setItem('sideCollapsed',c?'1':'0')}catch(e){}};
+  try{if(localStorage.getItem('sideCollapsed')==='1')document.body.classList.add('side-collapsed')}catch(e){}
+  document.getElementById('collapseBtn').addEventListener('click',()=>setCollapsed(true));
+  document.getElementById('expandBtn').addEventListener('click',()=>setCollapsed(false));
   show((location.hash||'').slice(1),false);
   window.addEventListener('hashchange',()=>show(location.hash.slice(1),'jump'));
   document.querySelectorAll('.copy').forEach(btn=>btn.addEventListener('click',()=>{
