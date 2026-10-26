@@ -345,6 +345,10 @@ a.art-pill b{font-weight:500;color:var(--muted);transition:transform .15s}
 a.art-pill:hover{border-color:var(--accent)}
 a.art-pill:hover b{transform:translateX(2px);color:var(--accent)}
 .hero h1{margin-bottom:-4px}
+.entry.has-photo{padding-right:22px;display:grid;grid-template-columns:minmax(0,1fr) 150px;column-gap:24px;align-items:start}
+.entry.has-photo>*:not(.entry-photo){grid-column:1}
+.entry-photo{grid-column:2;grid-row:1 / span 5;width:150px;aspect-ratio:4/5;object-fit:cover;border-radius:8px;border:1px solid var(--rule);cursor:zoom-in}
+@media (max-width:560px){.entry.has-photo{grid-template-columns:minmax(0,1fr)}.entry-photo{grid-column:1;grid-row:auto;width:100%;max-width:220px;order:-1}}
 </style>
 </head>
 <body>
@@ -847,12 +851,15 @@ a.art-pill:hover b{transform:translateX(2px);color:var(--accent)}
         <article class="entry" data-icon="mega">
           <h3>Mechatronics Ambassador</h3>
           <div class="where"><span>McMaster University</span><span>Sep 2026 – Present</span></div>
-          <ul><li>Represent the Mechatronics Engineering program at recruitment and outreach events.</li><li>Staffed the Mechatronics booth at McMaster Fall Preview 2026, speaking with hundreds of prospective students and families, answering questions and sharing my experience in the program.</li></ul><ul class="tags"><li>Outreach</li><li>Public speaking</li></ul>
+          <p class="teaser">Representing the Mechatronics program to prospective students and families at recruitment events.</p>
+          <details class="more"><summary><span>Read more</span></summary><ul><li>Represent the Mechatronics Engineering program at recruitment and outreach events.</li><li>Staffed the Mechatronics booth at McMaster Fall Preview 2026, speaking with hundreds of prospective students and families, answering questions and sharing my experience in the program.</li></ul></details><ul class="tags"><li>Outreach</li><li>Public speaking</li></ul>
         </article>
-        <article class="entry" data-icon="bar">
-          <h3>Workshop Host &amp; Summer Camp Counsellor</h3>
+        <article class="entry has-photo">
+          <img class="entry-photo" src="img/work-chocolate-tales.jpg" loading="lazy" decoding="async" alt="Jiya making chocolate at a Chocolate Tales event">
+          <h3>Chocolatier, Workshop Host &amp; Camp Counsellor</h3>
           <div class="where"><span>Chocolate Tales, Hamilton, ON</span><span>Jun 2025 – Present</span><span>Part-time</span></div>
-          <ul><li>Run chocolate- and food-making workshops and parties for children, adults, families and people with disabilities, adapting each session to the group.</li><li>Assist with cooking, baking and cocktail-making classes, including corporate events of more than 80 people.</li><li>Led the summer camp as a counsellor for two summers, guiding kids through baking, cooking and chocolate-making activities.</li><li>Help produce chocolate for retail and handle mass packaging for large orders and the Christmas season.</li></ul><ul class="tags"><li>Event delivery</li><li>Accessibility</li><li>Teaching</li></ul>
+          <p class="teaser">Running hands-on chocolate and food workshops for groups of all ages and abilities, from kids' parties to corporate events of 80+ people.</p>
+          <details class="more"><summary><span>Read more</span></summary><ul><li>Run chocolate- and food-making workshops and parties for children, adults, families and people with disabilities, adapting each session to the group.</li><li>Assist with cooking, baking and cocktail-making classes, including corporate events of more than 80 people.</li><li>Led the summer camp as a counsellor for two summers, guiding kids through baking, cooking and chocolate-making activities.</li><li>Help produce chocolate for retail and handle mass packaging for large orders and the Christmas season.</li></ul></details><ul class="tags"><li>Event delivery</li><li>Accessibility</li><li>Teaching</li></ul>
         </article></div></section>
 
     <section class="sheet" id="volunteering" data-label="Leadership" hidden>
@@ -1134,8 +1141,8 @@ a.art-pill:hover b{transform:translateX(2px);color:var(--accent)}
   lb.innerHTML='<button type="button">Close</button><img alt=""><p></p>';document.body.appendChild(lb);
   const closeLb=()=>{lb.hidden=true};
   lb.addEventListener('click',closeLb);addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
-  document.querySelectorAll('.gallery img').forEach(im=>{im.tabIndex=0;
-    const open=()=>{const i=lb.querySelector('img');i.src=im.src;i.alt=im.alt;const c=im.closest('figure').querySelector('figcaption');lb.querySelector('p').textContent=c?c.textContent:'';lb.hidden=false;lb.querySelector('button').focus()};
+  document.querySelectorAll('.gallery img, .entry-photo').forEach(im=>{im.tabIndex=0;
+    const open=()=>{const i=lb.querySelector('img');i.src=im.src;i.alt=im.alt;const f=im.closest('figure'),c=f?f.querySelector('figcaption'):null;lb.querySelector('p').textContent=c?c.textContent:'';lb.hidden=false;lb.querySelector('button').focus()};
     im.addEventListener('click',open);im.addEventListener('keydown',e=>{if(e.key==='Enter')open()});
   });
   const side=document.getElementById('side'),mb=document.getElementById('menuBtn');
