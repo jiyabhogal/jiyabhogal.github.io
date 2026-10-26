@@ -15,18 +15,21 @@
 <style>
 /* Layout: engineering-drawing title block as the header; a sheet index for nav; each page is one "sheet". */
 :root{
-  --bg:#FCF6F8; --paper:#FFFFFF; --ink:#2A1A23; --muted:#7A6270; --rule:#F0DCE4;
-  --accent:#C2255C; --accent-soft:#FCE4EE; --todo:#B4570C; --grid:rgba(194,37,92,.06); --accent2:#8A4FD0; --accent3:#D9782F; --on-accent:#FFFFFF;
+  --bg:#FFF8FA; --paper:#FFFFFF; --ink:#3A2A33; --muted:#86717D; --rule:#F5E1EA;
+  --accent:#C4507F; --accent-soft:#FDEAF2; --todo:#B4570C; --grid:rgba(196,80,127,.05); --accent2:#A78BDB; --accent3:#EFA477; --on-accent:#3A2A33;
+  --fill:#F9CADD; --fill2:#DCD0F5; --fill3:#CFE8E0;
   --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
   --body:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#1A1016; --paper:#25161F; --ink:#F7EAF0; --muted:#C2A6B4; --rule:#3E2834;
-  --accent:#FF8FB9; --accent-soft:#3F1F2F; --todo:#F0A35E; --grid:rgba(255,143,185,.05); --accent2:#C4A2F5; --accent3:#F5B27C; --on-accent:#1A1016; color-scheme:dark}}
+  --bg:#1E171C; --paper:#2A2027; --ink:#F7ECF1; --muted:#C4ADB9; --rule:#40323B;
+  --accent:#F6B3CF; --accent-soft:#3E2A35; --todo:#F0A35E; --grid:rgba(246,179,207,.04); --accent2:#CDB8F5; --accent3:#F5C29E; --on-accent:#2A1F26;
+  --fill:#F3B9D0; --fill2:#CDBDF0; --fill3:#B9DDD1; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#1A1016; --paper:#25161F; --ink:#F7EAF0; --muted:#C2A6B4; --rule:#3E2834;
-  --accent:#FF8FB9; --accent-soft:#3F1F2F; --todo:#F0A35E; --grid:rgba(255,143,185,.05); --accent2:#C4A2F5; --accent3:#F5B27C; --on-accent:#1A1016; color-scheme:dark}
+  --bg:#1E171C; --paper:#2A2027; --ink:#F7ECF1; --muted:#C4ADB9; --rule:#40323B;
+  --accent:#F6B3CF; --accent-soft:#3E2A35; --todo:#F0A35E; --grid:rgba(246,179,207,.04); --accent2:#CDB8F5; --accent3:#F5C29E; --on-accent:#2A1F26;
+  --fill:#F3B9D0; --fill2:#CDBDF0; --fill3:#B9DDD1; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
@@ -290,6 +293,19 @@ body{background-image:none;padding-block:0}
   .quick div:nth-child(2){border-right:0}.quick div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
   .featured{grid-template-columns:1fr}
 }
+
+/* Pastel fills */
+.btn.primary{background:var(--fill);border-color:var(--fill);color:var(--on-accent)}
+.btn.primary:hover{color:var(--on-accent);filter:brightness(1.03)}
+.facts-grid .fact.big{background:var(--fill)}
+.facts-grid .fact.big:nth-child(4){background:var(--fill2)}
+.facts-grid .fact.big:nth-child(8){background:var(--fill3)}
+.facts-grid .fact.big .sym{border-color:color-mix(in srgb,var(--on-accent) 25%,transparent)}
+.stat:nth-child(1){background:color-mix(in srgb,var(--fill) 35%,var(--paper))}
+.stat:nth-child(2){background:color-mix(in srgb,var(--fill2) 35%,var(--paper))}
+.stat:nth-child(3){background:color-mix(in srgb,var(--fill3) 35%,var(--paper))}
+.stat:nth-child(4){background:color-mix(in srgb,var(--accent3) 18%,var(--paper))}
+.side nav button[aria-current="page"]{color:var(--ink)}
 </style>
 </head>
 <body>
