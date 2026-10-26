@@ -319,6 +319,14 @@ body.side-collapsed .side{display:none}
 body.side-collapsed .expand-btn{display:inline-flex}
 body.side-collapsed .content{padding-top:72px}
 @media (max-width:900px){.collapse-btn,.expand-btn{display:none!important}body.side-collapsed .side{display:flex}body.side-collapsed .content{padding-top:24px}}
+
+.hero{align-items:center;text-align:center}
+.hero p,.hero .eyebrow,.hero .hero-lead{max-width:none}
+.hero .hero-lead{max-width:62rem}
+.cta{justify-content:center}
+.tb-art{height:180px}
+.tb-art .lbl{display:none}
+@media (max-width:560px){.tb-art{height:150px}}
 </style>
 </head>
 <body>
@@ -985,51 +993,117 @@ body.side-collapsed .content{padding-top:72px}
     d.innerHTML='<svg viewBox="0 0 24 24">'+(ICONS[a.dataset.icon]||'')+'</svg>';a.prepend(d);
   });
 
-  // Header schematic: circuit traces into a chip, chip into a DNA helix
+  // Header schematic: sensors -> traces -> MCU -> signal -> DNA double helix
   const cv=document.getElementById('art');
   if(cv&&cv.getContext){
     const ctx=cv.getContext('2d');
     const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let W=0,H=0,traces=[],chip=null;const t0=performance.now();
     const col=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+    const SENS=['IMU','TEMP','ECG','SpO₂','ToF','EMG'];
+    let W=0,H=0,traces=[],deco=[],chip=null,sensors=[],dust=[],t0=performance.now(),flash=0;
+    function pathLen(pts){let l=0;for(let k=1;k<pts.length;k++)l+=Math.hypot(pts[k][0]-pts[k-1][0],pts[k][1]-pts[k-1][1]);return l}
+    function at(tr,f){let d=f*tr.len;for(let k=1;k<tr.pts.length;k++){const a=tr.pts[k-1],b=tr.pts[k],l=Math.hypot(b[0]-a[0],b[1]-a[1]);if(d<=l){const u=l?d/l:0;return[a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u]}d-=l}return tr.pts[tr.pts.length-1]}
     function layout(){
       const r=cv.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2);
       W=r.width;H=r.height;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
-      const ch=H*.5,cw=Math.max(44,ch*.8),cx=Math.max(120,W*.36);
+      const narrow=W<560, n=narrow?4:6;
+      const ch=H*.56,cw=Math.max(54,ch*.95),cx=Math.max(narrow?150:210,W*(narrow?.40:.33));
       chip={x:cx-cw/2,y:(H-ch)/2,w:cw,h:ch};
-      traces=[];const n=7;
+      sensors=[];traces=[];deco=[];
+      const top=22,bot=H-26;
       for(let i=0;i<n;i++){
-        const y0=H*(i+.6)/(n+.2),yp=chip.y+ch*(i+1)/(n+1),dy=Math.abs(yp-y0);
-        const xa=Math.max(14,chip.x-26-dy-(i%3)*10);
-        const pts=[[6,y0],[xa,y0],[xa+dy,yp],[chip.x,yp]];
-        let len=0;for(let k=1;k<pts.length;k++)len+=Math.hypot(pts[k][0]-pts[k-1][0],pts[k][1]-pts[k-1][1]);
-        traces.push({pts,len,off:(i*0.37)%1});
+        const y=top+(bot-top)*i/(n-1), sx=narrow?16:44;
+        sensors.push({x:sx,y,label:SENS[i],kind:i%4});
+        const yp=chip.y+ch*(i+1)/(n+1);
+        const x1=sx+(narrow?26:46)+((i*37)%3)*14, x2=chip.x-30-Math.abs(i-(n-1)/2)*9;
+        const pts=[[sx+8,y],[x1,y],[x1+Math.min(18,Math.abs(yp-y)*.4),y+(yp-y)*.4],[x2-Math.abs(yp-y)*.6,y+(yp-y)*.4],[x2,yp],[chip.x,yp]];
+        traces.push({pts,len:pathLen(pts),off:(i*0.29)%1,spd:.22+((i*13)%5)*.03});
       }
+      // decorative branches ending in vias
+      for(let i=0;i<n-1;i++){const tr=traces[i],p=tr.pts[1];const len=18+((i*7)%3)*10;deco.push([[p[0]-10,p[1]],[p[0]-10+len*.5,p[1]+(i%2?-1:1)*len*.5]]);}
+      dust=[];const hs=chip.x+chip.w+70;for(let i=0;i<(narrow?10:24);i++)dust.push({x:hs+Math.random()*(W-hs),y:Math.random()*H,r:.6+Math.random()*1.4,v:.08+Math.random()*.18,ph:Math.random()*6});
     }
-    function at(tr,f){let d=f*tr.len;for(let k=1;k<tr.pts.length;k++){const a=tr.pts[k-1],b=tr.pts[k],l=Math.hypot(b[0]-a[0],b[1]-a[1]);if(d<=l){const u=l?d/l:0;return[a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u]}d-=l}return tr.pts[tr.pts.length-1]}
+    function sensorGlyph(s,acc,ink,paper){
+      ctx.lineWidth=1.4;ctx.strokeStyle=acc;ctx.fillStyle=paper;
+      ctx.beginPath();ctx.arc(s.x,s.y,7.5,0,7);ctx.fill();ctx.stroke();
+      ctx.fillStyle=acc;ctx.strokeStyle=acc;ctx.beginPath();
+      if(s.kind===0){ctx.arc(s.x,s.y,2.4,0,7);ctx.fill();}
+      else if(s.kind===1){ctx.rect(s.x-2.6,s.y-2.6,5.2,5.2);ctx.fill();}
+      else if(s.kind===2){ctx.moveTo(s.x-4,s.y);ctx.lineTo(s.x-1.5,s.y);ctx.lineTo(s.x,s.y-3.5);ctx.lineTo(s.x+1.5,s.y+3);ctx.lineTo(s.x+4,s.y);ctx.stroke();}
+      else{ctx.moveTo(s.x,s.y-3);ctx.lineTo(s.x+3,s.y+2.5);ctx.lineTo(s.x-3,s.y+2.5);ctx.closePath();ctx.fill();}
+    }
     function draw(now){
-      const t=((now||performance.now())-t0)/1000,ink=col('--ink'),acc=col('--accent'),acc2=col('--accent2'),rule=col('--rule'),paper=col('--paper'),muted=col('--muted');
+      const t=((now||performance.now())-t0)/1000;
+      const ink=col('--ink'),acc=col('--accent'),acc2=col('--accent2'),rule=col('--rule'),paper=col('--paper'),muted=col('--muted');
+      const fills=[col('--fill'),col('--fill2'),col('--fill3'),col('--fill4')];
       ctx.clearRect(0,0,W,H);
-      ctx.lineWidth=1.5;ctx.strokeStyle=acc;ctx.globalAlpha=.55;
-      traces.forEach(tr=>{ctx.beginPath();tr.pts.forEach((p,k)=>k?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke()});
+      // traces
+      ctx.lineJoin='round';ctx.lineCap='round';
+      ctx.strokeStyle=acc;ctx.globalAlpha=.35;ctx.lineWidth=1.3;
+      deco.forEach(d=>{ctx.beginPath();ctx.moveTo(d[0][0],d[0][1]);ctx.lineTo(d[1][0],d[1][1]);ctx.stroke();});
+      ctx.globalAlpha=1;deco.forEach(d=>{ctx.beginPath();ctx.arc(d[1][0],d[1][1],2.2,0,7);ctx.fillStyle=paper;ctx.fill();ctx.strokeStyle=acc;ctx.lineWidth=1.2;ctx.stroke();});
+      ctx.globalAlpha=.5;ctx.lineWidth=1.6;
+      traces.forEach(tr=>{ctx.beginPath();tr.pts.forEach((p,k)=>k?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke();});
       ctx.globalAlpha=1;
-      traces.forEach(tr=>{const p=tr.pts[0];ctx.beginPath();ctx.arc(p[0],p[1],3,0,7);ctx.fillStyle=paper;ctx.fill();ctx.strokeStyle=acc;ctx.stroke()});
-      if(!still)traces.forEach(tr=>{const p=at(tr,((t*.3+tr.off)%1));ctx.beginPath();ctx.arc(p[0],p[1],2.6,0,7);ctx.fillStyle=acc;ctx.fill()});
-      ctx.fillStyle=paper;ctx.strokeStyle=ink;ctx.lineWidth=1.5;ctx.fillRect(chip.x,chip.y,chip.w,chip.h);ctx.strokeRect(chip.x,chip.y,chip.w,chip.h);
-      ctx.beginPath();ctx.arc(chip.x+8,chip.y+8,2.2,0,7);ctx.fillStyle=ink;ctx.fill();
-      ctx.font='500 9px "IBM Plex Mono",monospace';ctx.fillStyle=muted;ctx.textAlign='center';ctx.fillText('MCU',chip.x+chip.w/2,chip.y+chip.h/2+3);
-      const hx0=chip.x+chip.w,hs=hx0+26,he=W-12,mid=H/2,amp=H*.26,ph=still?0:t*1.1,freq=2*Math.PI/150;
-      ctx.strokeStyle=ink;ctx.lineWidth=1.5;
-      for(let k=0;k<3;k++){const y=chip.y+chip.h*(k+1)/4;ctx.beginPath();ctx.moveTo(hx0,y);ctx.lineTo(hs,mid+(y-mid)*.3);ctx.stroke()}
-      for(let x=hs;x<=he;x+=13){
-        const a=Math.sin((x-hs)*freq+ph);
-        ctx.strokeStyle=rule;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x,mid+amp*a);ctx.lineTo(x,mid-amp*a);ctx.stroke();
-      }
-      [[1,acc],[-1,acc2]].forEach(([sg,c])=>{
-        ctx.strokeStyle=c;ctx.lineWidth=2.2;ctx.beginPath();
-        for(let x=hs;x<=he;x+=2){const y=mid+sg*amp*Math.sin((x-hs)*freq+ph);x===hs?ctx.moveTo(x,y):ctx.lineTo(x,y)}
-        ctx.stroke();
+      // packets with trails
+      let arriving=0;
+      if(!still)traces.forEach((tr,i)=>{
+        const f=(t*tr.spd+tr.off)%1; if(f>.97)arriving=1;
+        for(let k=7;k>=0;k--){const ff=f-k*.012;if(ff<0)continue;const p=at(tr,ff);
+          ctx.globalAlpha=(1-k/8)*.9;ctx.fillStyle=k?acc2:acc;ctx.beginPath();ctx.arc(p[0],p[1],k?2.2-k*.18:3,0,7);ctx.fill();}
       });
+      ctx.globalAlpha=1;
+      // sensors
+      ctx.font='500 8px "IBM Plex Mono",monospace';ctx.textAlign='left';
+      sensors.forEach(s=>{sensorGlyph(s,acc,ink,paper);if(W>=560){ctx.fillStyle=muted;ctx.textAlign='right';ctx.fillText(s.label,s.x-12,s.y+3);}});
+      // chip
+      flash=Math.max(0,flash-.05);if(arriving)flash=1;
+      const c=chip,pins=6;
+      ctx.strokeStyle=ink;ctx.lineWidth=1.3;
+      for(let k=1;k<=pins;k++){const x=c.x+c.w*k/(pins+1);ctx.beginPath();ctx.moveTo(x,c.y-6);ctx.lineTo(x,c.y);ctx.moveTo(x,c.y+c.h);ctx.lineTo(x,c.y+c.h+6);ctx.stroke();}
+      ctx.fillStyle=paper;ctx.lineWidth=1.6;ctx.beginPath();ctx.roundRect?ctx.roundRect(c.x,c.y,c.w,c.h,4):ctx.rect(c.x,c.y,c.w,c.h);ctx.fill();ctx.stroke();
+      const dx=c.x+c.w*.22,dy=c.y+c.h*.22,dw=c.w*.56,dh=c.h*.56;
+      ctx.globalAlpha=.25+.55*flash;ctx.fillStyle=fills[0];ctx.fillRect(dx,dy,dw,dh);ctx.globalAlpha=1;
+      ctx.strokeStyle=acc;ctx.lineWidth=1;ctx.strokeRect(dx,dy,dw,dh);
+      ctx.beginPath();ctx.arc(c.x+7,c.y+7,2,0,7);ctx.fillStyle=ink;ctx.fill();
+      ctx.font='600 9px "IBM Plex Mono",monospace';ctx.fillStyle=ink;ctx.textAlign='center';ctx.fillText('MCU',c.x+c.w/2,c.y+c.h/2+3);
+      // output signal morphing into helix
+      const hx0=c.x+c.w, hs=hx0+14, he=W-14, mid=H/2, amp=H*.29, ph=still?0:t*1.15, freq=2*Math.PI/(W<560?110:150), ramp=W<560?50:90;
+      const A=x=>amp*Math.min(1,Math.max(0,(x-hs)/ramp));
+      // base pairs
+      const step=W<560?10:11;
+      for(let x=hs+ramp*.5;x<=he;x+=step){
+        const a=Math.sin((x-hs)*freq+ph),z=Math.cos((x-hs)*freq+ph),y1=mid+A(x)*a,y2=mid-A(x)*a,ym=(y1+y2)/2,idx=Math.floor((x-hs)/step)%4;
+        const pair=idx<2?[fills[0],fills[1]]:[fills[2],fills[3]];const pr=idx%2?[pair[1],pair[0]]:pair;
+        ctx.globalAlpha=.35+.45*Math.abs(z);ctx.lineWidth=2.6;
+        ctx.strokeStyle=pr[0];ctx.beginPath();ctx.moveTo(x,y1);ctx.lineTo(x,ym);ctx.stroke();
+        ctx.strokeStyle=pr[1];ctx.beginPath();ctx.moveTo(x,ym);ctx.lineTo(x,y2);ctx.stroke();
+      }
+      ctx.globalAlpha=1;
+      // strands drawn back-to-front by depth
+      const strand=(sg,c1,front)=>{
+        ctx.strokeStyle=c1;ctx.lineCap='round';
+        let prev=null;
+        for(let x=hs;x<=he;x+=2){
+          const th=(x-hs)*freq+ph,y=mid+sg*A(x)*Math.sin(th),z=sg*Math.cos(th),isFront=z>=0;
+          if(prev&&isFront===front){ctx.lineWidth=front?2.8:1.6;ctx.globalAlpha=front?1:.45;ctx.beginPath();ctx.moveTo(prev[0],prev[1]);ctx.lineTo(x,y);ctx.stroke();}
+          prev=[x,y];
+        }
+        ctx.globalAlpha=1;
+      };
+      strand(1,acc,false);strand(-1,acc2,false);strand(1,acc,true);strand(-1,acc2,true);
+      // bus from chip into the helix start
+      ctx.strokeStyle=ink;ctx.lineWidth=1.3;
+      for(let k=0;k<3;k++){const y=c.y+c.h*(k+1)/4;ctx.beginPath();ctx.moveTo(hx0,y);ctx.lineTo(hs,mid+(y-mid)*.15);ctx.stroke();}
+      // nucleotide beads
+      for(let x=hs+ramp;x<=he;x+=step*2){
+        [[1,acc],[-1,acc2]].forEach(([sg,cc])=>{const th=(x-hs)*freq+ph,y=mid+sg*A(x)*Math.sin(th),z=sg*Math.cos(th);
+          ctx.globalAlpha=z>=0?1:.4;ctx.fillStyle=cc;ctx.beginPath();ctx.arc(x,y,z>=0?2.6:1.8,0,7);ctx.fill();});
+      }
+      ctx.globalAlpha=1;
+      // drifting particles
+      dust.forEach(d=>{const y=still?d.y:(d.y-t*d.v*20)%H;const yy=y<0?y+H:y;ctx.globalAlpha=.25+.2*Math.sin(t+d.ph);ctx.fillStyle=acc2;ctx.beginPath();ctx.arc(d.x,yy,d.r,0,7);ctx.fill();});
+      ctx.globalAlpha=1;
       if(!still)requestAnimationFrame(draw);
     }
     layout();requestAnimationFrame(draw);
@@ -1039,6 +1113,7 @@ body.side-collapsed .content{padding-top:72px}
     new MutationObserver(redraw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
     if(document.fonts&&document.fonts.ready)document.fonts.ready.then(redraw);
   }
+
 
 
   // Click a gallery image to view it full size
