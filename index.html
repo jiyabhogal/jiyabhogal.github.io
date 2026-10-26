@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Jiya Bhogal | Portfolio">
+<meta property="og:description" content="Mechatronics and Biomedical Engineering student at McMaster University. Projects, research, publications and leadership.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-family:system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Jiya Bhogal | Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Jiya Bhogal: Mechatronics and Biomedical Engineering student at McMaster University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: engineering-drawing title block as the header; a sheet index for nav; each page is one "sheet". */
+:root{
+  --bg:#F3F5F8; --paper:#FFFFFF; --ink:#141B2D; --muted:#5A6478; --rule:#D5DBE5;
+  --accent:#2346D8; --accent-soft:#E6EBFC; --todo:#B4570C; --grid:rgba(35,70,216,.07); --accent2:#0E9E8E; --accent3:#C9731A; --on-accent:#FFFFFF;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1220; --paper:#141B2D; --ink:#E7EBF3; --muted:#9AA4B8; --rule:#283247;
+  --accent:#8EA6FF; --accent-soft:#1E2A4F; --todo:#F0A35E; --grid:rgba(142,166,255,.06); --accent2:#4FD6C4; --accent3:#F2A65A; --on-accent:#0D1220; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1220; --paper:#141B2D; --ink:#E7EBF3; --muted:#9AA4B8; --rule:#283247;
+  --accent:#8EA6FF; --accent-soft:#1E2A4F; --todo:#F0A35E; --grid:rgba(142,166,255,.06); --accent2:#4FD6C4; --accent3:#F2A65A; --on-accent:#0D1220; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 56px}
+.wrap{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+
+/* Title block */
+.tb{border:1.5px solid var(--ink);background:var(--paper);display:grid;grid-template-columns:1fr auto}
+.tb-name{padding:22px 24px;border-right:1.5px solid var(--ink);min-width:0}
+.tb-name h1{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1;margin:0;letter-spacing:-.02em}
+.tb-name p{margin:10px 0 0;color:var(--muted);max-width:52ch}
+.tb-meta{display:grid;grid-template-columns:auto auto;font-family:var(--mono);font-size:.75rem}
+.tb-meta div{padding:8px 14px;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:2px}
+.tb-meta div:nth-child(odd){border-right:1px solid var(--rule)}
+.tb-meta div:nth-last-child(-n+2){border-bottom:0}
+.tb-meta span{text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-size:.65rem}
+@media (max-width:640px){.tb{grid-template-columns:1fr}.tb-name{border-right:0;border-bottom:1.5px solid var(--ink)}}
+
+/* Sheet index nav */
+nav{overflow-x:auto;border-bottom:1.5px solid var(--ink)}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:4px;width:max-content}
+nav button{font:500 .85rem var(--body);color:var(--muted);background:none;border:0;padding:10px 12px;cursor:pointer;display:flex;gap:8px;align-items:baseline;border-bottom:3px solid transparent;margin-bottom:-1.5px}
+nav button small{font-family:var(--mono);font-size:.68rem}
+nav button:hover{color:var(--ink)}
+nav button[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+/* Sheets */
+.sheet{display:flex;flex-direction:column;gap:20px}
+.sheet-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.sheet-head h2{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,4vw,2.2rem);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.sheet-no{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.lead{font-size:1.1rem;max-width:62ch;margin:0}
+p{max-width:65ch}
+
+.entry{background:var(--paper);border:1px solid var(--rule);padding:20px 22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.entry h3{font-family:var(--display);font-weight:500;font-size:1.25rem;margin:0;line-height:1.25;text-wrap:balance}
+.entry .where{font-family:var(--mono);font-size:.78rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 14px}
+.entry ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:4px;max-width:68ch}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0!important;margin:0}
+.tags li{font-family:var(--mono);font-size:.72rem;padding:2px 8px;background:var(--accent-soft);color:var(--ink);border-radius:2px}
+.badge{align-self:flex-start;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);border:1px solid currentColor;padding:2px 8px}
+.list{display:flex;flex-direction:column;gap:14px}
+
+.todo{border:1.5px dashed var(--todo);background:transparent}
+.todo .badge{color:var(--todo)}
+
+.about-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:720px){.about-grid{grid-template-columns:1fr}}
+.facts{border-top:1.5px solid var(--ink)}
+.facts div{display:grid;grid-template-columns:8.5em 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:.92rem}
+.facts dt{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding-top:3px}
+.facts dd{margin:0;min-width:0}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px}
+
+.pub{border-left:3px solid var(--accent)}
+.pub cite{font-style:normal}
+.contact-row{display:grid;grid-template-columns:8.5em minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule)}
+.contact-row span:first-child{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.contact-row code{font-family:var(--mono);font-size:.9rem;overflow-wrap:anywhere;user-select:all}
+.copy{font:500 .78rem var(--body);background:none;border:1px solid var(--rule);color:var(--ink);padding:4px 10px;cursor:pointer}
+.copy:hover{border-color:var(--accent)}
+footer{font-family:var(--mono);font-size:.72rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media (prefers-reduced-motion:no-preference){.sheet{animation:in .25s ease-out}@keyframes in{from{transform:translateY(4px)}to{transform:none}}}
+
+/* Graph-paper ground */
+body{background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+/* Header schematic */
+.tb-art{grid-column:1/-1;border-top:1.5px solid var(--ink);height:150px;position:relative;background:var(--paper)}
+.tb-art canvas{width:100%;height:100%;display:block}
+.tb-art .lbl{position:absolute;bottom:6px;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--paper);padding:0 4px}
+/* Entries: drawing crop marks + symbol */
+.entry{position:relative;padding-right:76px;transition:border-color .15s}
+.entry:hover{border-color:var(--accent)}
+.entry::before,.entry::after{content:"";position:absolute;width:10px;height:10px;border-color:var(--accent);border-style:solid;pointer-events:none}
+.entry::before{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.entry::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.sym{position:absolute;top:18px;right:18px;width:42px;height:42px;border:1px solid var(--rule);display:grid;place-items:center;color:var(--accent);background:var(--bg)}
+.sym svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.skills .entry{padding-right:22px}
+@media (max-width:480px){.entry{padding-right:22px}.sym{position:static;order:-1;width:38px;height:38px}}
+/* Highlights */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1.5px solid var(--ink);background:var(--paper)}
+.stat{padding:16px 18px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:4px;min-width:0}
+.stat:last-child{border-right:0}
+.stat b{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,5vw,2.6rem);line-height:1;color:var(--accent);letter-spacing:-.02em}
+.stat span{font-size:.82rem;color:var(--muted);line-height:1.35}
+@media (max-width:640px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--rule)}}
+/* Timeline */
+.tl-wrap{overflow-x:auto;padding-bottom:6px}
+.tl{list-style:none;margin:0;padding:6px 0 0;display:grid;grid-auto-flow:column;grid-auto-columns:150px;position:relative;width:max-content;min-width:100%}
+.tl::before{content:"";position:absolute;top:12px;left:0;right:0;height:2px;background:var(--ink)}
+.tl li{position:relative;padding:24px 14px 0 0;display:flex;flex-direction:column;gap:3px}
+.tl li::before{content:"";position:absolute;top:0;left:0;width:14px;height:14px;box-sizing:border-box;border:2px solid var(--accent);background:var(--paper);border-radius:50%}
+.tl li.bio::before{border-color:var(--accent2)}
+.tl li.lead::before{border-color:var(--accent3)}
+.tl time{font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spacing:.04em}
+.tl strong{font-weight:600;font-size:.9rem;line-height:1.3}
+.tl span{font-size:.8rem;color:var(--muted);line-height:1.35}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;border:2px solid var(--accent);margin-right:6px;vertical-align:-1px}
+.legend i.bio{border-color:var(--accent2)}
+.legend i.lead{border-color:var(--accent3)}
+.subhead{font-family:var(--display);font-weight:500;font-size:1.25rem;margin:8px 0 0}
+nav button[aria-current="page"]{background:var(--accent-soft)}
+
+/* Teasers and expanders */
+.teaser{margin:0;font-size:1.02rem;max-width:62ch}
+details.more{border-top:1px dashed var(--rule);padding-top:8px}
+details.more summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font:500 .82rem var(--body);color:var(--accent);padding:4px 0}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .15s}
+details.more[open] summary::after{transform:rotate(-135deg) translate(-2px,0)}
+details.more[open] summary span{font-size:0}
+details.more[open] summary span::before{content:"Show less";font-size:.82rem}
+details.more > ul,.more-body{margin-top:10px}
+.more-body{display:flex;flex-direction:column;gap:16px}
+.more-body p{margin:0}
+.more-body h4{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 8px;font-weight:500}
+.chips{list-style:none;padding:0!important;margin:0;display:flex;flex-wrap:wrap;gap:6px}
+.chips li{border:1px solid var(--rule);background:var(--bg);padding:4px 10px;font-size:.85rem}
+ol.steps{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:8px;max-width:68ch}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,170px));gap:12px}
+@media (max-width:480px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.gallery figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
+.gallery figure.wide{grid-column:1/-1}
+.gallery img{width:100%;max-width:100%;aspect-ratio:3/4;object-fit:cover;height:auto;border:1px solid var(--rule);display:block}
+.gallery figcaption{font-size:.8rem;color:var(--muted);line-height:1.4}
+.entry.has-cover{padding-right:22px}
+.cover{width:100%;max-width:100%;height:auto;display:block;border:1px solid var(--rule);background:#FEF7E6}
+/* Fun facts */
+.facts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:14px}
+.fact{position:relative;background:var(--paper);border:1px solid var(--rule);padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.fact .sym{position:static;margin-bottom:6px}
+.fact h3{font-family:var(--display);font-weight:500;font-size:1.15rem;margin:0;line-height:1.25}
+.fact p{margin:0;font-size:.92rem;color:var(--muted)}
+.fact b{font-family:var(--display);font-weight:700;font-size:2.4rem;line-height:1;color:var(--accent);letter-spacing:-.02em}
+.fact.big{background:var(--accent-soft);border-color:transparent}
+.fact.big .sym{background:var(--paper)}
+.cover-type{background:#4A3556;color:#FFFFFF;font-family:"Times New Roman",Georgia,serif;text-align:center;padding:22px 16px;display:flex;flex-direction:column;gap:2px;font-size:clamp(1.15rem,3.4vw,1.9rem);line-height:1.15;border:1px solid var(--rule)}
+
+/* Project banners */
+.banner{background:var(--b-bg);color:#fff;height:132px;display:flex;align-items:stretch;justify-content:space-between;overflow:hidden;position:relative;border:1px solid var(--rule);background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:20px 20px;background-color:var(--b-bg)}
+.b-txt{padding:18px 20px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;z-index:1;min-width:0;max-width:62%}
+.b-sub{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--b-ac)}
+.b-name{font-family:var(--display);font-weight:700;font-size:clamp(1.3rem,3.6vw,2rem);line-height:1.05;letter-spacing:-.01em;text-wrap:balance;color:#fff}
+.banner svg{height:100%;width:auto;max-width:60%;flex:none}
+.banner svg .a{fill:none;stroke:var(--b-ac);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.banner svg .d{fill:none;stroke:rgba(255,255,255,.75);stroke-width:1.6;stroke-dasharray:4 4;stroke-linecap:round}
+.banner svg .l{fill:none;stroke:rgba(255,255,255,.22);stroke-width:1.4}
+.banner svg .f{fill:rgba(255,255,255,.12);stroke:var(--b-ac);stroke-width:2}
+.banner svg .s{fill:var(--b-ac);stroke:none}
+.banner svg .t{fill:var(--b-ac);font:500 13px "IBM Plex Mono",monospace}
+@media (max-width:480px){.banner{height:110px}.b-txt{max-width:70%}.banner svg{max-width:45%;opacity:.8}}
+
+.entry ul.tags,.entry ul.chips{flex-direction:row;flex-wrap:wrap;padding-left:0}
+.gallery img{aspect-ratio:4/3;object-fit:contain;background:#fff}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.gallery img{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,14,24,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));cursor:zoom-out}
+.lb img{max-width:min(100%,1000px);max-height:80vh;object-fit:contain;background:#fff}
+.lb p{color:#E7EBF3;margin:0;font-size:.9rem;text-align:center}
+.lb button{position:absolute;top:max(12px,env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));background:none;border:1px solid rgba(255,255,255,.4);color:#fff;font:500 .85rem var(--body);padding:6px 12px;cursor:pointer}
+.cover-box{background:#fff;border:1px solid var(--rule);display:flex;justify-content:center;align-items:center;padding:10px;height:clamp(120px,22vw,190px)}
+.cover-logo{max-height:100%;max-width:100%;width:auto;display:block}
+.watch{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font:500 .85rem var(--body);color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:6px 12px 6px 8px}
+.watch svg{width:16px;height:16px;fill:currentColor}
+.watch:hover{background:var(--accent-soft)}
+.tb-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font:500 .85rem var(--body)}
+.gallery.photos,.gallery.moments{grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}
+.gallery.photos img,.gallery.moments img{aspect-ratio:4/3;object-fit:cover;background:var(--bg)}
+.gallery.moments{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:560px){.gallery.moments{grid-template-columns:1fr}}
+.pubnote{margin:0;font-size:.88rem;color:var(--muted)}
+
+.facts-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1.5px solid var(--ink)}
+.facts-grid .fact{border:0;padding:24px 22px 26px}
+.facts-grid .fact.plain{background:var(--paper)}
+.facts-grid .fact.big{background:var(--accent);color:var(--on-accent)}
+.facts-grid .fact.big p,.facts-grid .fact.big b{color:var(--on-accent)}
+.facts-grid .fact.big p{opacity:.85}
+.facts-grid .fact.big .sym{background:transparent;border-color:color-mix(in srgb,var(--on-accent) 40%,transparent);color:var(--on-accent)}
+@media (max-width:720px){.facts-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="tb">
+    <div class="tb-name">
+      <h1>Jiya Bhogal</h1>
+      <p>Mechatronics and Biomedical Engineering student at McMaster University, working where engineering, computation and biomedical research meet.</p>
+      <div class="tb-links"><a href="https://www.linkedin.com/in/jiyabhogal" target="_blank" rel="noopener">LinkedIn ↗</a><a href="#contact" onclick="event.preventDefault();document.querySelector('nav button[data-target=contact]').click()">Contact</a></div>
+    </div>
+    <div class="tb-meta" aria-label="Summary">
+      <div><span>Program</span>iBioMed · Mechatronics</div>
+      <div><span>Year</span>3 of 5</div>
+      <div><span>School</span>McMaster University</div>
+      <div><span>Grad</span>Apr 2029</div>
+      <div><span>Based</span>Hamilton, ON</div>
+      <div><span>Seeking</span>Winter/Summer 2027 co-op</div>
+    </div>
+    <div class="tb-art" aria-hidden="true"><canvas id="art"></canvas><span class="lbl" style="left:8px">Fig. 1 · Mechatronics</span><span class="lbl" style="right:8px">Biomedical</span></div>
+  </header>
+
+  <nav aria-label="Sections"><ul id="nav"></ul></nav>
+
+  <main>
+    <section class="sheet" id="about" data-label="About">
+      <div class="sheet-head"><h2>About Me</h2><span class="sheet-no">Sheet 01</span></div>
+      <div class="about-grid">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <p class="lead">I'm a third-year Mechatronics and Biomedical Engineering (iBioMed) student at McMaster University.</p>
+          <p>My research experience spans immunology, infectious disease, biomedical diagnostics and systems biology, including a research placement at the Africa Health Research Institute in Durban, South Africa. On the engineering side I build things: wearable sensing systems, embedded prototypes, and simulations of how biological and physical systems behave.</p>
+          <p>I'm interested in applying engineering and computational approaches to translational biomedical research, and in aerospace, where sensing, modelling and human factors matter just as much.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Degree</dt><dd>B.Eng. &amp; Biomedical Eng. (iBioMed), Mechatronics</dd></div>
+          <div><dt>Research</dt><dd>HIV immunology, spatial biology, virology</dd></div>
+          <div><dt>Published</dt><dd>URNCST Journal, 2026</dd></div>
+          <div><dt>Awards</dt><dd>2nd Place, iGEM x SHAD 2026 · 3rd Place, McMaster Engineering Competition 2025</dd></div>
+          <div><dt>Leadership</dt><dd>VP Events, MMS · iBioMed Rep, MES · Editor, <em>The Frequency</em></dd></div>
+          <div><dt>Interests</dt><dd>Biomedical devices, aerospace systems</dd></div>
+        </dl>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>2nd</b><span>iGEM x SHAD Case Competition 2026</span></div>
+        <div class="stat"><b>3rd</b><span>Innovative Design, McMaster Engineering Competition 2025</span></div>
+        <div class="stat"><b>Top 4</b><span>iBioMed Final Showcase 2024–25</span></div>
+        <div class="stat"><b>1</b><span>Published abstract, URNCST Journal</span></div>
+      </div>
+      <div class="gallery moments">
+        <figure><img src="img/01-42a437ce99.jpg" loading="lazy" decoding="async" alt="Jiya and teammates with the First Runner-Up certificate"><figcaption>2nd place at the iGEM x SHAD Case Competition 2026.</figcaption></figure>
+        <figure><img src="img/02-57aae4f621.jpg" loading="lazy" decoding="async" alt="MEC team holding certificates"><figcaption>3rd place in Innovative Design at the McMaster Engineering Competition 2025.</figcaption></figure>
+        <figure><img src="img/03-c1b845df6e.jpg" loading="lazy" decoding="async" alt="Jiya presenting PathFinder on stage"><figcaption>Presenting PathFinder at the iBioMed Final Showcase 2025.</figcaption></figure>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap"><h3 class="subhead">Timeline</h3><div class="legend"><span><i></i>Engineering</span><span><i class="bio"></i>Biomedical research</span><span><i class="lead"></i>Leadership &amp; work</span></div></div>
+      <div class="tl-wrap"><ol class="tl">
+        <li><time>Sep 2024</time><strong>Started at McMaster</strong><span>iBioMed, Mechatronics</span></li>
+        <li><time>Apr 2025</time><strong>PathFinder</strong><span>Top 4 at iBioMed Showcase</span></li>
+        <li class="lead"><time>Jun 2025</time><strong>Chocolate Tales</strong><span>Workshop Host &amp; Camp Counsellor</span></li>
+        <li><time>Nov 2025</time><strong>MEC 3rd Place</strong><span>Eyes4Energy drone system</span></li>
+        <li class="bio"><time>Mar 2026</time><strong>iGEM x SHAD 2nd</strong><span>Published in URNCST</span></li>
+        <li class="lead"><time>May 2026</time><strong>MES iBioMed Rep</strong><span>and Editor, <em>The Frequency</em></span></li>
+        <li class="bio"><time>May–Jun 2026</time><strong>AHRI, Durban</strong><span>Ndhlovu &amp; Sigal Labs</span></li>
+        <li class="lead"><time>Sep 2026</time><strong>MMS VP Events</strong><span>McMaster Mechatronics Society</span></li>
+        <li class="lead"><time>Sep 2026</time><strong>Mechatronics Ambassador</strong><span>McMaster University</span></li>
+      </ol></div>
+      <h3 class="subhead">Skills</h3>
+      <div class="skills">
+        <div class="entry"><h3>Programming &amp; Tools</h3><ul class="tags"><li>Python</li><li>MATLAB</li><li>Simulink</li><li>C</li><li>C++</li><li>Java</li><li>Git/GitLab</li></ul></div>
+        <div class="entry"><h3>Hardware &amp; Design</h3><ul class="tags"><li>Arduino</li><li>Raspberry Pi</li><li>Sensors</li><li>Autodesk Inventor</li><li>3D printing</li><li>Prototyping</li></ul></div>
+        <div class="entry"><h3>Modelling &amp; Systems</h3><ul class="tags"><li>MATLAB SimBiology</li><li>Benchling</li><li>Requirements</li><li>User stories</li><li>System design</li></ul></div>
+        <div class="entry"><h3>Laboratory</h3><ul class="tags"><li>PCR</li><li>Gel electrophoresis</li><li>Microscopy</li><li>ELISA</li><li>HALO</li><li>BSL-2+/3</li></ul></div>
+      </div>
+    </section>
+
+    <section class="sheet" id="biomed" data-label="Biomedical Projects" hidden>
+      <div class="sheet-head"><h2>Biomedical Projects</h2><span class="sheet-no">Sheet 02</span></div><div class="list">
+        <article class="entry" data-banner="aptamer"><span class="badge">2nd Place · iGEM x SHAD 2026</span>
+          <h3>Aptamer-SPION Magnetic Filtration for Malaria-Infected Blood</h3>
+          <div class="where"><span>iGEM McMaster x SHAD at Mac Case Competition</span><span>Mar 2026</span><span>Team of 5</span></div>
+          <p class="pubnote">Published as a conference abstract in the <em>URNCST Journal</em> · <a href="https://doi.org/10.26685/urncst.1125" target="_blank" rel="noopener">doi:10.26685/urncst.1125</a></p>
+          <p class="teaser">What if a magnet could pull malaria out of donated blood? Our filtration concept could let more Canadians become blood donors.</p>
+          <details class="more"><summary><span>Read more</span></summary>
+            <div class="more-body">
+              <p><strong>The problem:</strong> Canadians returning from malaria-endemic regions must wait three months before donating blood, which adds to Canada's blood shortage.</p>
+              <div>
+                <h4>Our solution</h4>
+                <ol class="steps">
+                  <li>Donor blood is incubated with aptamers bound to superparamagnetic iron oxide nanoparticles (SPIONs). The aptamers bind PfEMP1, a malaria marker on the surface of infected red blood cells.</li>
+                  <li>A gate valve controls the flow rate into two primary high-gradient magnetic separation zones that capture the tagged cells, and a secondary zone removes remaining debris while uninfected blood drains through by gravity.</li>
+                  <li>The step fits into the existing donation pipeline after nucleic acid screening and before standard processing and storage.</li>
+                  <li>Removing infected cells this way could shorten the deferral period and expand donor eligibility.</li>
+                </ol>
+              </div>
+              <div>
+                <h4>What we did</h4>
+                <ol class="steps">
+                  <li><strong>Research.</strong> Evaluated diagnostic feasibility, biological implementation, cost per blood unit, and safety requirements such as complete removal of SPIONs before transfusion.</li>
+                  <li><strong>Prototype.</strong> 3D modelled and printed a working model of the filtration pathway to show how the system functions.</li>
+                  <li><strong>Pitch.</strong> Presented our research to judges in Phase 2 of the competition and placed second. This work became my first publication, a conference abstract in the URNCST Journal.</li>
+                </ol>
+              </div>
+              <div class="gallery">
+                <figure><img src="img/04-1c62ac9c74.jpg" loading="lazy" decoding="async" alt="CAD model of the filtration system with funnel, tube, magnets and stand"><figcaption>CAD model of the filtration pathway.</figcaption></figure>
+                <figure><img src="img/05-34f391f7a8.jpg" loading="lazy" decoding="async" alt="3D-printed filtration prototype with clear tubing and magnets"><figcaption>3D-printed prototype.</figcaption></figure>
+                <figure><img src="img/06-c8801d84a4.jpg" loading="lazy" decoding="async" alt="Jiya and two teammates holding the First Runner-Up certificate in front of the competition screen"><figcaption>Awarded First Runner-Up.</figcaption></figure>
+                <figure><img src="img/07-71d3e9deef.jpg" loading="lazy" decoding="async" alt="Workflow diagram from screening to malaria-free donor blood"><figcaption>Proposed workflow.</figcaption></figure>
+                <figure><img src="img/08-37c4650b48.jpg" loading="lazy" decoding="async" alt="Diagram of SPION-tagged infected cells captured by magnets"><figcaption>Primary magnetic capture stage.</figcaption></figure>
+                <figure><img src="img/09-b3f3b33fff.jpg" loading="lazy" decoding="async" alt="Labelled CAD render showing gate valve and filtration zones"><figcaption>Labelled CAD render (Fusion 360).</figcaption></figure>
+              </div>
+            </div>
+          </details>
+          <ul class="tags"><li>Synthetic biology</li><li>Magnetic separation</li><li>CAD</li><li>3D printing</li></ul>
+        </article>
+        <article class="entry has-cover">
+          <div class="cover-box"><img class="cover-logo" src="img/10-bcfe5b7eb8.jpg" loading="lazy" decoding="async" alt="PathFinder logo on a pair of snowboarding goggles"></div>
+          <span class="badge">Top 4 · iBioMed Final Showcase</span>
+          <h3>PathFinder: Hazard-Detecting Goggles for Snowboarders with Low Vision</h3>
+          <div class="where"><span>Design Project 4</span><span>McMaster iBioMed, Level I</span><span>Team Manager · Coding Subteam</span><span>Team of 4</span></div>
+          <p class="teaser">Snowboarding goggles that scan the slope ahead and buzz faster as obstacles get closer, built for a 67-year-old client with limited peripheral vision.</p>
+          <a class="watch" href="https://youtu.be/2x0VG4jR68Q" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Watch the prototype video I edited</a>
+          <details class="more"><summary><span>Read more</span></summary>
+            <div class="more-body">
+              <p><strong>Objective:</strong> Identify a real need for a member of the local community and develop a solution based on a careful assessment of the client's needs.</p>
+              <div>
+                <h4>The client</h4>
+                <ul class="chips"><li>67-year-old man with multiple sclerosis</li><li>Wants to snowboard</li><li>Limited peripheral vision</li><li>Cost concerns</li></ul>
+              </div>
+              <div>
+                <h4>How it works</h4>
+                <ol class="steps">
+                  <li>A servo motor sweeps a time-of-flight distance sensor, housed discreetly on top of the goggles, across a 120° field ahead.</li>
+                  <li>Two vibration motors on the headband buzz faster as a detected object gets closer.</li>
+                  <li>A single red LED warns when snow is blocking the sensor, and a push button controls the device.</li>
+                </ol>
+              </div>
+              <div>
+                <h4>What I did</h4>
+                <ol class="steps">
+                  <li><strong>Led the team.</strong> As team manager, I set weekly agendas, booked design studio time, ran TA meetings, kept everyone on schedule, and made the final call when ideas competed.</li>
+                  <li><strong>Pivoted on client feedback.</strong> We first planned a seated snowboard with sensors. Talking to the client showed his real concerns were reaction time and vision, not balance, so we redesigned around hazard-detecting goggles.</li>
+                  <li><strong>Refined the design.</strong> After design review, we replaced proximity LEDs with vibration cues, since a visual signal doesn't help a user with poor vision. We also moved the motors from the temples to the headband after learning that vibration near the temples can cause headaches and eye strain.</li>
+                  <li><strong>Code and electronics.</strong> I co-wrote the code from a shared flowchart and pseudocode. I wired the distance sensor, servo, push button, LED and both vibration motors, and soldered the push-button connections, which was my first time soldering.</li>
+                  <li><strong>Debugged under deadline.</strong> I built troubleshooting time into the schedule, expecting integration problems. When the housed sensor wouldn't rotate, we traced the cause to taped wires acting like a spring against the servo. On presentation day I set a backup plan and asked the design studio staff for advice. Their suggested servo change got the prototype working fully.</li>
+                  <li><strong>Presented.</strong> I presented how the design works and the conclusion, and shot and edited our prototype video. We were selected as one of the top 4 teams to present at the iBioMed Final Showcase.</li>
+                </ol>
+              </div>
+              <div class="gallery">
+                <figure><img src="img/11-0fd17843d6.jpg" loading="lazy" decoding="async" alt="Pencil sketch of PathFinder goggles with servo, distance sensor and vibration motors labelled"><figcaption>Prototype sketch.</figcaption></figure>
+                <figure><img src="img/12-733ce99818.jpg" loading="lazy" decoding="async" alt="Ski goggles with paper labels marking the sensor and LED positions"><figcaption>First mock-up on real goggles.</figcaption></figure>
+                <figure><img src="img/13-5096cb57a7.jpg" loading="lazy" decoding="async" alt="Breadboard wiring for the sensors and motors"><figcaption>Breadboard wiring.</figcaption></figure>
+                <figure><img src="img/14-0b23de9fe4.jpg" loading="lazy" decoding="async" alt="Jiya soldering wires at a soldering station"><figcaption>Soldering the push button.</figcaption></figure>
+                <figure><img src="img/15-82e8832714.jpg" loading="lazy" decoding="async" alt="Final PathFinder prototype with 3D-printed frame and sensor housing"><figcaption>Final prototype.</figcaption></figure>
+                <figure><img src="img/16-b79539678f.jpg" loading="lazy" decoding="async" alt="Final prototype from above showing headband and vibration motor housings"><figcaption>Headband with vibration motor housings.</figcaption></figure>
+                <figure><img src="img/17-0fe1d307ae.jpg" loading="lazy" decoding="async" alt="Human field of view diagram beside CAD render of the 120 degree sensing range"><figcaption>120° sensing range.</figcaption></figure>
+                <figure><img src="img/18-afc509ec7c.jpg" loading="lazy" decoding="async" alt="CAD render of the hidden rotating sensor mount"><figcaption>Hidden rotating sensor mount.</figcaption></figure>
+                <figure><img src="img/19-c96d822708.jpg" loading="lazy" decoding="async" alt="Head diagram and goggles showing vibration motor positions"><figcaption>Vibration motor placement.</figcaption></figure>
+                <figure><img src="img/20-cf5691caac.jpg" loading="lazy" decoding="async" alt="Final PathFinder goggles beside their branded box"><figcaption>Final prototype, ready for the showcase.</figcaption></figure>
+              </div>
+              <div>
+                <h4>At the iBioMed Final Showcase</h4>
+                <div class="gallery photos">
+                  <figure><img src="img/03-c1b845df6e.jpg" loading="lazy" decoding="async" alt="Jiya presenting PathFinder on stage with her team"><figcaption>Presenting on the main stage.</figcaption></figure>
+                  <figure><img src="img/21-3a78347db3.jpg" loading="lazy" decoding="async" alt="The four team members in suits holding the PathFinder goggles"><figcaption>The PathFinder team.</figcaption></figure>
+                </div>
+              </div>
+            </div>
+          </details>
+          <ul class="tags"><li>Client research</li><li>Sensors</li><li>Soldering</li><li>Team leadership</li></ul>
+        </article>
+        <article class="entry has-cover">
+          <img class="cover" src="img/22-071622e348.jpg" loading="lazy" decoding="async" alt="VelOstomy logo">
+          <h3>VelOstomy: Ostomy Bag Management for Active Patients</h3>
+          <div class="where"><span>Design Project 1</span><span>McMaster iBioMed, Level I</span><span>Subject Matter Expert</span><span>Team of 4</span></div>
+          <p class="teaser">Ostomy bags aren't built for athletes. VelOstomy is our design to keep one secure and leak-free through an active lifestyle.</p>
+          <a class="watch" href="https://youtu.be/D10Jx5pcNDQ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Watch the prototype video I edited</a>
+          <details class="more"><summary><span>Read more</span></summary>
+            <div class="more-body">
+              <p><strong>Objective:</strong> Improve the management of an ostomy bag by translating an assigned problem into objectives and constraints, designing a solution, and justifying why it should go on to further development.</p>
+              <div>
+                <h4>The patient</h4>
+                <ul class="chips"><li>Female ileostomy patient</li><li>Active lifestyle</li><li>Frequent leaks</li><li>Changes her bag often</li><li>Cost concerns</li></ul>
+              </div>
+              <div>
+                <h4>How we got there</h4>
+                <ol class="steps">
+                  <li><strong>Team roles.</strong> We set up our administrative roles, and I took on the role of subject matter expert.</li>
+                  <li><strong>Information gathering.</strong> We interviewed ostomy patients, medical professionals and a representative from an ostomy bag manufacturer, then wrote our need statement, objectives and constraints.</li>
+                  <li><strong>Concept generation.</strong> Each of us researched ideas on our own, then we combined the strongest into one concept. My contribution was kinesiology sports tape as a flexible, sweat-resistant way to prevent leaks.</li>
+                  <li><strong>Prototyping.</strong> We chose materials and built a preliminary prototype. I bought the kinesiology tape and built the final prototype with our team manager.</li>
+                  <li><strong>Deliverables.</strong> A one-page product slide, an individual research summary and 3-Minute Thesis talk each, an abstract I co-wrote on form, function, user interaction and material choice, and a full design history file. I also edited our product video and built the team's source materials database.</li>
+                </ol>
+              </div>
+              <div class="gallery">
+                <figure><img src="img/23-db1d1a399a.jpg" loading="lazy" decoding="async" alt="Hand-drawn prototype sketch of the ostomy bag with labels for a velcro belt, kinesiology sports tape and a pH paper leakage indicator"><figcaption>Concept sketch: velcro belt, kinesiology tape seal and pH-paper leak indicator.</figcaption></figure>
+                <figure><img src="img/24-49435f83ff.jpg" loading="lazy" decoding="async" alt="Preliminary prototype worn at the waist, front view"><figcaption>Preliminary prototype, front.</figcaption></figure>
+                <figure><img src="img/25-92ecd4ef88.jpg" loading="lazy" decoding="async" alt="Preliminary prototype worn at the waist, side view"><figcaption>Preliminary prototype, side.</figcaption></figure>
+              </div>
+            </div>
+          </details>
+          <ul class="tags"><li>User research</li><li>Prototyping</li><li>Materials</li><li>Video editing</li></ul>
+        </article>
+        <article class="entry" data-banner="hip">
+          <h3>Patient-Specific Hip Implant</h3>
+          <div class="where"><span>Design Project 2</span><span>McMaster iBioMed, Level I</span><span>Team Administrator · CAD Subteam</span><span>Team of 4</span></div>
+          <p class="teaser">We diagnosed a patient from his X-rays, then designed and 3D printed a hip implant shaped to his anatomy.</p>
+          <details class="more"><summary><span>Read more</span></summary>
+            <div class="more-body">
+              <p><strong>Objective:</strong> Diagnose a patient who needs a hip replacement, design a custom implant for him, build a solid model, write an analysis program, and justify how the design meets his needs.</p>
+              <div>
+                <h4>The patient</h4>
+                <ul class="chips"><li>Developmental Hip Dysplasia</li><li>Frequent hip dislocations</li><li>Serious mobility limitations</li><li>Severe hip and groin pain</li><li>Bilateral hip tilt</li><li>Athletic lifestyle</li></ul>
+              </div>
+              <div>
+                <h4>What I did</h4>
+                <ol class="steps">
+                  <li><strong>Diagnosis.</strong> We read the patient's pelvic radiographs with guidance from radiologists, diagnosed Developmental Hip Dysplasia, and wrote the need statement, objectives and constraints.</li>
+                  <li><strong>Concept.</strong> Combined individual sketches into one design, including a porous stem surface for long-term bone integration and a femoral shortening approach to reduce the 25° hip tilt.</li>
+                  <li><strong>Materials.</strong> Researched candidate materials for the acetabular shell. With a materials expert, the team chose silicon nitride with a silver-based coating, and selected materials for the remaining components.</li>
+                  <li><strong>CAD.</strong> On the CAD subteam, I took the patient's pelvic and femoral measurements and modelled the femoral stem and head in Autodesk Inventor, including surface pores and grooves for fixation.</li>
+                  <li><strong>Analysis and testing.</strong> Calculated fracture risk for a cobalt-chrome stem under combined loading and the resulting bone stress reduction. Ran tensile, compression and three-point bending tests in the materials lab.</li>
+                  <li><strong>Prototype and delivery.</strong> 3D printed the implant twice, completed a technical interview, and presented a poster at the design showcase. As team administrator, I organized the design history file and submitted all deliverables on time.</li>
+                </ol>
+              </div>
+              <div class="gallery">
+                <figure><img src="img/26-78bddc868b.jpg" loading="lazy" decoding="async" alt="Six renders of the full hip implant CAD assembly"><figcaption>Final CAD assembly.</figcaption></figure>
+                <figure><img src="img/27-0281a49842.jpg" loading="lazy" decoding="async" alt="Six renders of the femoral stem and head"><figcaption>Femoral stem and head, which I modelled.</figcaption></figure>
+                <figure><img src="img/28-c5c2f8efb6.jpg" loading="lazy" decoding="async" alt="Close-up renders of pores and grooves on the stem surface"><figcaption>Pores and grooves for bone integration.</figcaption></figure>
+                <figure><img src="img/29-d1f5a25963.jpg" loading="lazy" decoding="async" alt="Blue 3D-printed femoral stem and acetabular cup"><figcaption>3D-printed prototype.</figcaption></figure>
+                <figure><img src="img/30-63fcfdcbe3.jpg" loading="lazy" decoding="async" alt="Tensile test stress versus strain graph"><figcaption>Tensile test: stress vs. strain.</figcaption></figure>
+                <figure><img src="img/31-3bc3a94638.jpg" loading="lazy" decoding="async" alt="Compression test stress versus strain graph"><figcaption>Compression test.</figcaption></figure>
+                <figure><img src="img/32-4a9cf2a8d3.jpg" loading="lazy" decoding="async" alt="Three-point bend test stress versus strain graph"><figcaption>Three-point bend test.</figcaption></figure>
+              </div>
+            </div>
+          </details>
+          <ul class="tags"><li>Autodesk Inventor</li><li>3D printing</li><li>Materials testing</li><li>Biomechanics</li></ul>
+        </article>
+        <article class="entry" data-banner="spine">
+          <h3>Spine Align: Squat Form-Correction Device</h3>
+          <div class="where"><span>Design Project 3</span><span>McMaster iBioMed, Level I</span><span>Team Coordinator · Coding Subteam</span><span>Team of 4</span></div>
+          <p class="teaser">A wearable that senses your back angle mid-squat, warns you with a vibration, then physically pushes your spine back into position.</p>
+          <a class="watch" href="https://youtu.be/cTeEHn7GmD4" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Watch the prototype video I edited</a>
+          <details class="more"><summary><span>Read more</span></summary>
+            <div class="more-body">
+              <p><strong>Objective:</strong> Design a device that improves accessibility by automating a common task, taking input from a sensor and giving output to the user. Our users were beginner gym-goers learning to squat, since improper form is behind the most common gym injury, to the back.</p>
+              <div>
+                <h4>How it works</h4>
+                <ol class="steps">
+                  <li>An orientation sensor on the user's back streams pitch readings, which the code smooths with a rolling average.</li>
+                  <li>If the back angle deviates past 45°, a vibration motor warns the user.</li>
+                  <li>DC motors then drive a gear train and rack and pinion that press on the upper or lower back to correct the angle.</li>
+                  <li>Once form is corrected, the rack retracts and the motors stop.</li>
+                </ol>
+              </div>
+              <div>
+                <h4>What I did</h4>
+                <ol class="steps">
+                  <li><strong>Concept.</strong> Brainstormed and sketched concepts, then used a Pugh matrix to select the final design. After design review, we replaced a single rotating arm with two fixed arms, one on the upper back and one on the lower back, for faster, more accurate correction.</li>
+                  <li><strong>Code.</strong> On the coding subteam, I planned the program with a flowchart and pseudocode, wrote my share of the functions, and integrated them into one program.</li>
+                  <li><strong>Hardware.</strong> Wired the orientation sensor, two DC motors and the vibration motor on a breadboard, then tested and tuned the code against live sensor data.</li>
+                  <li><strong>Fixing the fit under pressure.</strong> In the week of the design expo, the printed housing turned out too small for the electronics because of a measurement error. I proposed printing an extra piece to give the DC motors room, cut openings in the housing, and braced the motors so they couldn't shift. The gear train then ran smoothly for the demo.</li>
+                  <li><strong>Delivery.</strong> Demonstrated the device at the design expo and answered technical questions. I also kept detailed meeting minutes as team coordinator, co-wrote an industry-style memo and design history file, and shot and edited the prototype video.</li>
+                </ol>
+              </div>
+              <p><strong>Lesson learned:</strong> Verify the CAD measurements against the real components before printing, and reprint rather than patch when the schedule allows.</p>
+              <div class="gallery">
+                <figure><img src="img/33-c469d5e98c.jpg" loading="lazy" decoding="async" alt="Whiteboard storyboard showing how Spine Align detects and corrects squat form"><figcaption>Storyboard of how Spine Align works.</figcaption></figure>
+                <figure><img src="img/34-9a723f3136.jpg" loading="lazy" decoding="async" alt="Pencil sketch of the device with DC motor, linear actuator and orientation sensor labelled"><figcaption>Early prototype sketch.</figcaption></figure>
+                <figure><img src="img/35-9bf92e9df8.jpg" loading="lazy" decoding="async" alt="Hand-drawn flowchart of the control program"><figcaption>Control program flowchart.</figcaption></figure>
+                <figure><img src="img/36-656a18d17f.jpg" loading="lazy" decoding="async" alt="Breadboard with sensor and motor wiring"><figcaption>Breadboard wiring.</figcaption></figure>
+                <figure><img src="img/37-caf209e1cb.jpg" loading="lazy" decoding="async" alt="3D-printed housing with rack and pinion"><figcaption>Printed rack and pinion assembly.</figcaption></figure>
+                <figure><img src="img/38-ed9e14582c.jpg" loading="lazy" decoding="async" alt="Two photos of the motor and gear train being tested"><figcaption>Testing motors and gear train.</figcaption></figure>
+                <figure><img src="img/39-7c8fa6105d.jpg" loading="lazy" decoding="async" alt="Two people wearing Spine Align on their backs at the design expo"><figcaption>Spine Align in use at the design expo.</figcaption></figure>
+              </div>
+            </div>
+          </details>
+          <ul class="tags"><li>Embedded control</li><li>Sensors</li><li>Gear train</li><li>Prototyping</li></ul>
+        </article>
+        <article class="entry" data-banner="msa">
+          <h3>SynuSense: Nasal-Delivered PET Tracer for Multiple System Atrophy</h3>
+          <div class="where"><span>McMaster iBioMed</span><span>Team of 5</span><span>Investor pitch</span></div>
+          <p class="teaser">MSA is often misdiagnosed as Parkinson's until autopsy. SynuSense pairs a PET tracer with a nasal spray to give clinicians a definitive answer.</p>
+          <details class="more"><summary><span>Read more</span></summary>
+            <div class="more-body">
+              <p><strong>The problem:</strong> Multiple system atrophy (MSA-P) causes movement, balance and autonomic dysfunction, but no current test gives a definite diagnosis. Between 12% and 29% of autopsy-proven MSA cases were diagnosed as Parkinson's disease during the patient's life.</p>
+              <div>
+                <h4>Our concept</h4>
+                <ol class="steps">
+                  <li>[18F] ACI-12589 is a PET tracer that binds specifically to the misfolded alpha-synuclein aggregates that drive MSA.</li>
+                  <li>We proposed loading the tracer into a hydrogel delivered as a nasal spray, so it can travel along the olfactory and trigeminal nerves directly into the brain.</li>
+                  <li>A PET scan then shows the distinct MSA pattern of aggregation in glial cells, separating it from Parkinson's and Lewy body dementia.</li>
+                </ol>
+              </div>
+              <div>
+                <h4>The pitch</h4>
+                <ul class="chips"><li>~25,000 undiagnosed Americans targeted</li><li>~CA$3,240 median cost per scan</li><li>$10M investment ask</li><li>17-year path to market</li></ul>
+              </div>
+              <p>We built the full case: disease mechanism, the diagnostic gap, competitor analysis, a cost breakdown, a funding allocation, and a regulatory roadmap from patents to post-market surveillance.</p>
+              <div class="gallery">
+                <figure><img src="img/40-c1fdad1ebf.jpg" loading="lazy" decoding="async" alt="PET scans comparing control, MSA-P and Parkinson's brains"><figcaption>Tracer uptake: control vs. MSA-P vs. PD.</figcaption></figure>
+                <figure><img src="img/41-93154ecf76.jpg" loading="lazy" decoding="async" alt="Diagram of olfactory and trigeminal nerve pathways into the brain"><figcaption>Nerve pathways into the brain.</figcaption></figure>
+                <figure><img src="img/42-256add9c28.jpg" loading="lazy" decoding="async" alt="Diagram of tracer-coated hydrogel delivered by nasal spray"><figcaption>Hydrogel nasal delivery.</figcaption></figure>
+                <figure><img src="img/43-36a1125c1a.jpg" loading="lazy" decoding="async" alt="Timeline from patents in 2026 to market in 2043"><figcaption>Roadmap to market.</figcaption></figure>
+              </div>
+            </div>
+          </details>
+          <ul class="tags"><li>Neurodiagnostics</li><li>Drug delivery</li><li>Market analysis</li></ul>
+        </article>
+        <article class="entry" data-banner="athero">
+          <h3>Targeted Nanoparticle Therapy for Atherosclerosis</h3>
+          <div class="where"><span>McMaster iBioMed</span><span>Team of 5</span><span>Research proposal</span></div>
+          <p class="teaser">Calming artery inflammation at the source by sending a drug only where plaque is forming.</p>
+          <details class="more"><summary><span>Read more</span></summary>
+            <div class="more-body">
+              <p><strong>The problem:</strong> Atherosclerosis is the leading cause of cardiovascular disease worldwide. The NF-κB pathway drives the inflammation behind plaque growth, but the drug that blocks it (PS-341, a proteasome inhibitor) would harm healthy cells if given systemically.</p>
+              <div>
+                <h4>Our proposal</h4>
+                <ol class="steps">
+                  <li>Nanoparticles are coated with antibodies against ICAM-1, VCAM-1 and LOX-1, markers found on inflamed, plaque-prone artery walls.</li>
+                  <li>The nanoparticles carry PS-341 directly to those regions, blocking the proteasome from releasing NF-κB and interrupting the inflammation feedback loop.</li>
+                  <li>Evidence from the literature suggests this also helps macrophages export cholesterol to HDL for removal by the liver.</li>
+                </ol>
+              </div>
+              <p>We mapped the NF-κB pathway step by step, reviewed experimental evidence for targeting and drug efficacy, and defined patients with advanced atherosclerosis as the target group.</p>
+              <div class="gallery">
+                <figure><img src="img/44-22eb5bc4bb.jpg" loading="lazy" decoding="async" alt="Stages of artery narrowing from normal to plaque rupture"><figcaption>How plaque develops.</figcaption></figure>
+                <figure><img src="img/45-5dcbabeec0.jpg" loading="lazy" decoding="async" alt="Antibody-functionalized nanoparticles carrying PS-341"><figcaption>Antibody-coated nanoparticles.</figcaption></figure>
+                <figure><img src="img/46-40596d0760.jpg" loading="lazy" decoding="async" alt="Diagram of the NF-kB pathway with PS-341 blocking release"><figcaption>How the therapy breaks the pathway.</figcaption></figure>
+              </div>
+            </div>
+          </details>
+          <ul class="tags"><li>Nanomedicine</li><li>Cell signalling</li><li>Literature review</li></ul>
+        </article></div></section>
+
+    <section class="sheet" id="publications" data-label="Publications" hidden>
+      <div class="sheet-head"><h2>Publications</h2><span class="sheet-no">Sheet 03</span></div>
+      <article class="entry pub" data-icon="paper">
+        <span class="badge">Conference abstract · 2026</span>
+        <h3>Aptamer-SPION Magnetic Filtration System for the Removal of Malaria-Infected Erythrocytes to Expand Blood Donor Eligibility in Canada: A Synthetic Biology Approach</h3>
+        <cite>Droogendyk ZI, Yalameha S, Patel D, Zitouni YN, <strong>Bhogal J</strong>. <em>URNCST Journal</em>, 2026.</cite>
+        <div class="where"><a href="https://doi.org/10.26685/urncst.1125" target="_blank" rel="noopener">doi:10.26685/urncst.1125</a></div>
+      </article>
+    </section>
+
+    <section class="sheet" id="research" data-label="Research" hidden>
+      <div class="sheet-head"><h2>Lab Work &amp; Research</h2><span class="sheet-no">Sheet 04</span></div>
+      <p class="lead">Hands-on lab work at McMaster, and research shadowing across two labs at the Africa Health Research Institute (AHRI) in Durban, South Africa.</p>
+      <div class="list">
+        <article class="entry" data-icon="cells">
+          <h3>Ndhlovu Lab: HIV Immunology &amp; Spatial Biology</h3>
+          <div class="where"><span>AHRI, Durban</span><span>May–Jun 2026</span></div>
+          <ul>
+            <li>Shadowed spatial imaging and analysis of lymph node tissue to investigate HIV persistence within germinal centre regions.</li>
+            <li>Observed HALO-based image analysis to identify and quantify immune cell populations, including CD4⁺ T cells, CD8⁺ T cells and NK cells.</li>
+            <li>Observed tissue preparation, staining, imaging and diagnostic workflows supporting HIV tissue and vaccine research.</li>
+          </ul>
+          <ul class="tags"><li>Spatial biology</li><li>HALO</li><li>Tissue imaging</li></ul>
+        </article>
+        <article class="entry" data-icon="flask">
+          <h3>Sigal Lab: Emerging Pathogens &amp; Virology</h3>
+          <div class="where"><span>AHRI, Durban</span><span>May–Jun 2026</span></div>
+          <ul>
+            <li>Observed mammalian cell culture workflows, including confluency assessment, trypsinization, cell splitting and microscopic evaluation.</li>
+            <li>Shadowed ELISA workflows: plasma sample dilution, plate loading, incubation, washing and serological testing for viral pathogens.</li>
+            <li>Gained exposure to viral infection and neutralization assays run under BSL-2+/BSL-3 conditions.</li>
+          </ul>
+          <ul class="tags"><li>Cell culture</li><li>ELISA</li><li>BSL-3</li></ul>
+        </article>
+      
+        <article class="entry" data-icon="scope">
+          <h3>Biomedical Research &amp; Synthetic Biology Projects</h3>
+          <div class="where"><span>McMaster University</span><span>Sep 2024 – Present</span></div>
+          <ul><li>Performed laboratory assays including PCR, gel electrophoresis and microscopy, following biosafety and lab documentation protocols.</li><li>Designed experimental workflows and conducted literature reviews on cardiovascular disease, neurodegeneration and biomedical diagnostics.</li></ul><ul class="tags"><li>PCR</li><li>Gel electrophoresis</li><li>Microscopy</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="sheet" id="projects" data-label="Other Projects" hidden>
+      <div class="sheet-head"><h2>Engineering &amp; Other Projects</h2><span class="sheet-no">Sheet 05</span></div><div class="list">
+        <article class="entry" data-banner="hospital">
+          <h3>Hospital Monitoring System for Automated Dispensing Cabinets</h3>
+          <div class="where"><span>MECHTRON 3K04 · Software Development</span><span>Fall 2026</span><span>Repository &amp; Testing Lead</span></div>
+          <p class="teaser">The software that lets hospital staff see every medication cabinet at once: what's in stock, what's expired, which cabinet just went offline, and who tried to log in.</p>
+          <details class="more"><summary><span>Read more</span></summary>
+            <div class="more-body">
+              <p><strong>The system:</strong> A centralized Hospital Monitoring System (HMS) that communicates with the automated dispensing cabinets (ADCs) across a hospital. It gives pharmacists, nurses, physicians, administrators and cybersecurity staff role-based access to inventory, alarms, dispensing history and cabinet health.</p>
+              <div>
+                <h4>What we produced (team of 2)</h4>
+                <ul class="chips"><li>16 functional requirements</li><li>9 non-functional requirements</li><li>8 user stories with acceptance criteria</li><li>4 scenarios with activity diagrams</li><li>Full traceability table</li></ul>
+              </div>
+              <div>
+                <h4>How we approached it</h4>
+                <ol class="steps">
+                  <li><strong>Requirements.</strong> Broke the system into eight capabilities, from cabinet communication and inventory to alarms, reporting and request handling, and wrote testable requirements for each.</li>
+                  <li><strong>Safety and security.</strong> Specified behaviour like locking the system after five failed logins, ending sessions after 30 minutes of inactivity, logging unauthorized access, and keeping an offline mode during network outages.</li>
+                  <li><strong>Design models.</strong> Built the high-level architecture, a domain class model, a state machine and a use case diagram in UML.</li>
+                  <li><strong>Traceability.</strong> Linked every requirement to its user stories, system components and stakeholders so each one can be verified in testing.</li>
+                  <li><strong>Integration and testing.</strong> As repository and testing lead, I manage version control and testing to support integration and validate the requirements.</li>
+                </ol>
+              </div>
+              <div class="gallery">
+                <figure><img src="img/47-3bd7d2344b.jpg" loading="lazy" decoding="async" alt="High-level architecture diagram of the hospital monitoring system"><figcaption>High-level architecture.</figcaption></figure>
+                <figure><img src="img/48-9a41531a6a.jpg" loading="lazy" decoding="async" alt="UML state machine diagram"><figcaption>State machine.</figcaption></figure>
+                <figure><img src="img/49-ec462c477c.jpg" loading="lazy" decoding="async" alt="UML use case diagram with hospital roles"><figcaption>Use case diagram.</figcaption></figure>
+                <figure><img src="img/50-b43c3e7aba.jpg" loading="lazy" decoding="async" alt="Activity diagram for system lockdown after five failed logins"><figcaption>Lockdown scenario.</figcaption></figure>
+              </div>
+            </div>
+          </details>
+          <ul class="tags"><li>Requirements engineering</li><li>UML</li><li>Git/GitLab</li><li>Testing</li><li>Healthcare software</li></ul>
+        </article>
+        <article class="entry" data-banner="energy"><span class="badge">3rd Place · Innovative Design · MEC 2025</span>
+          <h3>Eyes4Energy: Drone-Based Disaster Damage Assessment</h3>
+          <div class="where"><span>McMaster Engineering Competition</span><span>Nov 2025</span><span>Team of 6</span></div>
+          <p class="teaser">Drones that survey a disaster zone and turn what they see into a map first responders can act on, so the power comes back on faster and more safely.</p>
+          <a class="watch" href="https://eyesforenergy.vercel.app/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6" fill="none" stroke="currentColor" stroke-width="2"/></svg>Visit the mock website we built</a>
+          <details class="more"><summary><span>Read more</span></summary>
+            <div class="more-body">
+              <p><strong>The challenge:</strong> Reimagine how engineering can support recovery and rebuilding after natural disasters, focusing on energy restoration, under tight time and resource limits.</p>
+              <div>
+                <h4>Our solution</h4>
+                <ol class="steps">
+                  <li>Two drone types work as a mesh network: relay drones with cameras survey the area, and a central drone with long-range communication links them back to a human controller for review.</li>
+                  <li>The E4E website maps compromised sites ranked by severity and generates safe access routes for trained technicians.</li>
+                  <li>It also flags low-skill tasks that volunteers can safely take on, easing the burden on first responders and speeding up energy restoration.</li>
+                </ol>
+              </div>
+              <p>We adapted existing drone CAD models for our relay and central drones, iterated on the design, built physical drone prototypes, and built a working mock-up of the E4E website with technician and volunteer views. We also assessed technical, market, environmental and social feasibility, then presented to industry judges and placed 3rd in the Innovative Design category.</p>
+              <div class="gallery">
+                <figure><img src="img/51-414e65f996.jpg" loading="lazy" decoding="async" alt="Two quadcopter drone prototypes built from craft materials"><figcaption>Drone prototypes.</figcaption></figure>
+                <figure><img src="img/52-05dd626feb.jpg" loading="lazy" decoding="async" alt="Team posing outside the engineering building holding the drone prototypes"><figcaption>The team with our drones.</figcaption></figure>
+                <figure><img src="img/02-57aae4f621.jpg" loading="lazy" decoding="async" alt="Team holding certificates of achievement beside the MEC banner"><figcaption>3rd place, Innovative Design.</figcaption></figure>
+                <figure><img src="img/53-47cf1ec1b8.jpg" loading="lazy" decoding="async" alt="Three drone design iterations"><figcaption>Drone design iterations.</figcaption></figure>
+                <figure><img src="img/54-8d379e7642.jpg" loading="lazy" decoding="async" alt="Diagram of operational flowchart and mesh network"><figcaption>Operation and mesh network.</figcaption></figure>
+                <figure><img src="img/55-e33f19aec4.jpg" loading="lazy" decoding="async" alt="E4E website map showing ranked damage sites"><figcaption>Mock website, technician view.</figcaption></figure>
+              </div>
+            </div>
+          </details>
+          <ul class="tags"><li>Drones / UAV</li><li>Mesh networks</li><li>Web prototype</li><li>Systems design</li><li>Rapid prototyping</li><li>Pitching</li></ul>
+        </article>
+        <article class="entry" data-banner="coral">
+          <h3>Bleaching Bad: Engineered Antioxidant Circuit to Protect Coral</h3>
+          <div class="where"><span>IBEHS 2PB2</span><span>Apr 2026</span><span>Team of 5</span></div>
+          <p class="teaser">A genetic circuit in marine bacteria that only switches on when the reef is both too hot and under oxidative stress, then releases antioxidants to keep coral and algae together.</p>
+          <a class="watch" href="https://bleaching-bad.vercel.app/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6" fill="none" stroke="currentColor" stroke-width="2"/></svg>Explore the reef monitoring dashboard</a>
+          <details class="more"><summary><span>Read more</span></summary>
+            <div class="more-body">
+              <p><strong>The problem:</strong> Coral reefs support about 25% of all marine species. Heat stress makes their symbiotic algae produce reactive oxygen species (ROS), which damage the partnership until the algae are expelled and the coral bleaches. Current strategies focus on environmental management and don't respond quickly to extreme heat events.</p>
+              <div>
+                <h4>How the circuit works</h4>
+                <ol class="steps">
+                  <li>The circuit lives in <em>Vibrio natriegens</em>, a fast-growing marine bacterium suited to salty reef environments.</li>
+                  <li>Two sensors act as an AND gate: an OxyR-responsive promoter detects ROS, and a temperature-sensitive promoter activates above 25 °C.</li>
+                  <li>Only when both are triggered is the cI repressor fully shut off, releasing the pR promoter to produce the antioxidant enzymes superoxide dismutase (SOD) and catalase.</li>
+                  <li>An SsrA degradation tag on TetR stops the system from firing during short, harmless ROS bursts.</li>
+                </ol>
+              </div>
+              <div>
+                <h4>What we did</h4>
+                <ol class="steps">
+                  <li><strong>Designed the construct.</strong> Mapped the circuit as an SBOL diagram and assembled all 23 parts into a 13,685 bp plasmid in Benchling using Golden Gate assembly, with primers for PCR amplification.</li>
+                  <li><strong>Planned wet-lab validation.</strong> Designed a restriction digest to verify assembly, plus GFP reporter, Western blot and spectrophotometry experiments to test each part of the logic.</li>
+                  <li><strong>Modelled it.</strong> Built a dynamic SimBiology model of every reaction. Under sustained heat and ROS the circuit produced large amounts of antioxidants, though the AND gate proved less sensitive to its inputs than expected.</li>
+                  <li><strong>Built a dashboard.</strong> Made an interactive website that maps reef locations and plots temperature against ROS over time.</li>
+                </ol>
+              </div>
+              <div class="gallery">
+                <figure><img src="img/56-1ba8a12e23.jpg" loading="lazy" decoding="async" alt="SBOL diagram of the dual-input antioxidant circuit"><figcaption>SBOL diagram of the circuit.</figcaption></figure>
+                <figure><img src="img/57-ac08eda614.jpg" loading="lazy" decoding="async" alt="Benchling plasmid map of the assembled construct"><figcaption>Golden Gate plasmid map (Benchling).</figcaption></figure>
+                <figure><img src="img/58-fc4780417e.jpg" loading="lazy" decoding="async" alt="SimBiology reaction model with grouped reaction blocks"><figcaption>SimBiology model.</figcaption></figure>
+                <figure><img src="img/59-53c1b6f244.jpg" loading="lazy" decoding="async" alt="Simulated protein levels at rest and under oxidative stress"><figcaption>Simulation: at rest vs. under stress.</figcaption></figure>
+                <figure><img src="img/60-be60d33e97.jpg" loading="lazy" decoding="async" alt="Bleaching Bad dashboard with reef map and temperature and ROS graph"><figcaption>Reef monitoring dashboard.</figcaption></figure>
+              </div>
+            </div>
+          </details>
+          <ul class="tags"><li>Synthetic biology</li><li>Genetic circuits</li><li>Benchling</li><li>SimBiology</li><li>Golden Gate</li></ul>
+        </article></div></section>
+
+    <section class="sheet" id="work" data-label="Work" hidden>
+      <div class="sheet-head"><h2>Work Experience</h2><span class="sheet-no">Sheet 06</span></div><div class="list">
+        <article class="entry" data-icon="mega">
+          <h3>Mechatronics Ambassador</h3>
+          <div class="where"><span>McMaster University</span><span>Sep 2026 – Present</span></div>
+          <ul><li>Represent the Mechatronics Engineering program at recruitment and outreach events.</li><li>Staffed the Mechatronics booth at McMaster Fall Preview 2026, speaking with hundreds of prospective students and families, answering questions and sharing my experience in the program.</li></ul><ul class="tags"><li>Outreach</li><li>Public speaking</li></ul>
+        </article>
+        <article class="entry" data-icon="bar">
+          <h3>Workshop Host &amp; Summer Camp Counsellor</h3>
+          <div class="where"><span>Chocolate Tales, Hamilton, ON</span><span>Jun 2025 – Present</span><span>Part-time</span></div>
+          <ul><li>Run chocolate- and food-making workshops and parties for children, adults, families and people with disabilities, adapting each session to the group.</li><li>Assist with cooking, baking and cocktail-making classes, including corporate events of more than 80 people.</li><li>Led the summer camp as a counsellor for two summers, guiding kids through baking, cooking and chocolate-making activities.</li><li>Help produce chocolate for retail and handle mass packaging for large orders and the Christmas season.</li></ul><ul class="tags"><li>Event delivery</li><li>Accessibility</li><li>Teaching</li></ul>
+        </article></div></section>
+
+    <section class="sheet" id="volunteering" data-label="Leadership" hidden>
+      <div class="sheet-head"><h2>Leadership &amp; Societies</h2><span class="sheet-no">Sheet 07</span></div><div class="list">
+        <article class="entry" data-icon="cal"><span class="badge">~50% cohort turnout</span>
+          <h3>VP Events, McMaster Mechatronics Society (MMS)</h3>
+          <div class="where"><span>Sep 2026 – Present</span></div>
+          <ul><li>Planned the Level II Intro Night, a presentation and Q&amp;A for second-year students on what to expect in Mechatronics. Handled everything from booking the room to flyers, bingo cards for an interactive activity, coordinating the media team’s posts, and catering.</li><li>About 40 students attended, roughly half of the 80-student Level II cohort.</li><li>Launching a new professional development series. Recruited two alumni through LinkedIn outreach for the first event, an alumni advice talk and Q&amp;A expecting 50+ students.</li><li>Organizing collaborations with the Materials Society (headshot night) and the Engineering Physics Society (LinkedIn workshop) as part of the series.</li><li>Represented MMS at ClubsFest, answering questions about the society and how to get involved.</li></ul><ul class="tags"><li>Event planning</li><li>Logistics</li><li>Partnerships</li></ul>
+        </article>
+        <article class="entry" data-icon="people">
+          <h3>iBioMed Representative, McMaster Engineering Society (MES)</h3>
+          <div class="where"><span>May 2026 – Present</span></div>
+          <ul><li>Represent all iBioMed students within MES and act as the liaison between MES and the iBioMed Society (iBMS).</li><li>Keep iBMS updated on bylaw changes, funding changes and other MES decisions that affect iBioMed students.</li><li>Help iBMS plan events including the iBioMed Industry Night: worked on the sponsorship package sent to employers and volunteering at the event.</li><li>Staffed MES booths at ClubsFest and Fall Preview 2026.</li></ul><ul class="tags"><li>Student governance</li><li>Sponsorship</li><li>Communication</li></ul>
+        </article>
+        <article class="entry" data-icon="pen">
+          <h3>Editor, <em>The Frequency</em>, McMaster Engineering Society</h3>
+          <div class="where"><span>May 2026 – Present</span></div>
+          <ul><li>Lead content planning and manage a team of writers and designers for the MES student magazine.</li><li>Oversee production from content development through publication next semester, managing deadlines across contributors.</li></ul><ul class="tags"><li>Editing</li><li>Team management</li></ul>
+        </article></div></section>
+
+    <section class="sheet" id="funfacts" data-label="Fun Facts" hidden>
+      <div class="sheet-head"><h2>Fun Facts</h2><span class="sheet-no">Sheet 08</span></div>
+      <p class="lead">Outside the lab and the workshop, I'm usually dancing, training, or planning my next trip.</p>
+      <div class="facts-grid">
+        <article class="fact plain" data-icon="compass"><h3>Solo traveller</h3><p>I've travelled solo to Greece, London and Panama, and most recently to Peru, where I visited Machu Picchu and hiked Laguna Humantay and the Red Valley.</p></article>
+        <article class="fact big" data-icon="plane"><b>15</b><h3>Countries visited</h3><p>And counting.</p></article>
+        <article class="fact plain" data-icon="run"><h3>Training for the long run</h3><p>I ran my first 10K in October 2026, and I'm working toward running South Africa's Comrades Marathon.</p></article>
+        <article class="fact big" data-icon="peak"><b>5,150 m</b><h3>Highest I've hiked</h3><p>The Red Valley, near Rainbow Mountain in Peru.</p></article>
+        <article class="fact plain" data-icon="flag"><h3>Kilimanjaro is next</h3><p>Climbing the Lemosho route in January 2027.</p></article>
+        <article class="fact big" data-icon="seven"><b>7</b><h3>Summits before 27</h3><p>My long-term goal is to climb the Seven Summits, with Everest before I turn 24.</p></article>
+        <article class="fact plain" data-icon="dance"><h3>Competitive and celebrity background dancer</h3><p>I dance competitively, and I've performed as a background dancer for artists including Aima Baig, Karan Aujla and Mojgan Azimi.</p></article>
+        <article class="fact big" data-icon="mic"><b>18</b><h3>Concerts attended so far</h3><p>I love live music.</p></article>
+        <article class="fact plain" data-icon="gecko"><h3>One weakness</h3><p>Crocodiles and iguanas are fine. Small house geckos are not.</p></article>
+      </div>
+    </section>
+
+    <section class="sheet" id="contact" data-label="Contact" hidden>
+      <div class="sheet-head"><h2>Contact</h2><span class="sheet-no">Sheet 09</span></div>
+      <p class="lead">I'm looking for a Winter or Summer 2027 co-op or research role in biomedical engineering or aerospace. Email is the best way to reach me.</p>
+      <div>
+        <div class="contact-row"><span>Email</span><code id="c-email">bhogaj5@mcmaster.ca</code><button class="copy" data-copy="c-email">Copy</button></div>
+        <div class="contact-row"><span>LinkedIn</span><a href="https://www.linkedin.com/in/jiyabhogal" target="_blank" rel="noopener" style="overflow-wrap:anywhere">linkedin.com/in/jiyabhogal</a><span></span></div>
+        <div class="contact-row"><span>Location</span><code>Hamilton, ON, Canada</code><span></span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>Jiya Bhogal · McMaster University</span><span>Rev. Oct 2026</span></footer>
+</div>
+
+<script>
+(function(){
+  const sheets=[...document.querySelectorAll('.sheet')];
+  const nav=document.getElementById('nav');
+  sheets.forEach((s,i)=>{
+    const li=document.createElement('li');
+    const b=document.createElement('button');
+    b.type='button';b.dataset.target=s.id;
+    b.innerHTML='<small>'+String(i+1).padStart(2,'0')+'</small>'+s.dataset.label;
+    b.addEventListener('click',()=>show(s.id,true));
+    li.appendChild(b);nav.appendChild(li);
+  });
+  function show(id,push){
+    if(!sheets.some(s=>s.id===id)) id='about';
+    sheets.forEach(s=>s.hidden=s.id!==id);
+    nav.querySelectorAll('button').forEach(b=>{
+      if(b.dataset.target===id){b.setAttribute('aria-current','page');b.scrollIntoView({block:'nearest',inline:'nearest'});}
+      else b.removeAttribute('aria-current');
+    });
+    if(push){try{history.replaceState(null,'','#'+id)}catch(e){} window.scrollTo({top:0});}
+  }
+  // Project banners: each a deliberate single-look block (own colours, both themes)
+  const BAN={
+    aptamer:{bg:'#2C1A4A',ac:'#E7B4FF',name:'Aptamer-SPION',sub:'Magnetic filtration',art:
+      '<path d="M250 30v42a40 40 0 0 0 80 0V30h-24v42a16 16 0 0 1-32 0V30z" class="f"/><path d="M250 46h24M306 46h24" class="a"/>'+
+      '<g class="a"><circle cx="180" cy="70" r="9"/><circle cx="205" cy="104" r="7"/><circle cx="150" cy="38" r="6"/><circle cx="372" cy="104" r="8"/><circle cx="392" cy="56" r="6"/></g>'+
+      '<g class="s"><circle cx="268" cy="104" r="6"/><circle cx="290" cy="114" r="6"/><circle cx="312" cy="104" r="6"/></g>'+
+      '<path d="M214 66c14-2 24 6 30 14M196 100c22 6 40 8 56 6" class="d"/>'},
+    pathfinder:{bg:'#0E2E4C',ac:'#A9DBFF',name:'PathFinder',sub:'Assistive navigation',art:
+      '<path d="M120 130L420 20" class="l"/><path d="M90 140L420 50" class="l"/>'+
+      '<path d="M170 116c40-10 50-40 90-46s60-30 100-36" class="d"/>'+
+      '<g class="s"><circle cx="170" cy="116" r="5"/><circle cx="260" cy="70" r="5"/><circle cx="360" cy="34" r="5"/></g>'+
+      '<g class="a"><path d="M360 34m-16 0a16 16 0 0 1 32 0"/><path d="M360 34m-28 0a28 28 0 0 1 56 0"/><path d="M360 34m-40 0a40 40 0 0 1 80 0"/></g>'},
+    velo:null,
+    hip:{bg:'#432C52',ac:'#F6A8CB',name:'Patient-Specific Hip Implant',sub:'CAD · 3D printing · materials',art:
+      '<path d="M300 24a44 44 0 0 1 88 0" class="a"/><path d="M296 24h96" class="a"/>'+
+      '<circle cx="344" cy="30" r="22" class="s"/>'+
+      '<path d="M336 50l-30 30c-8 8-12 18-12 28l-2 32h20l6-34c2-8 6-14 12-20l16-18z" class="f"/>'+
+      '<g class="d"><path d="M300 100h10M298 112h10M296 124h10"/></g>'+
+      '<path d="M150 116h90M150 116v-60" class="l"/><path d="M150 116l70-44" class="d"/><text x="168" y="108" class="t">25°</text>'},
+    spine:{bg:'#173E2F',ac:'#A6E9C2',name:'Spine Align',sub:'Squat form correction',art:
+      '<g class="f">'+[0,1,2,3,4,5,6].map(i=>{const x=330+Math.sin(i*.5)*14,y=12+i*18;return '<rect x="'+(x-16)+'" y="'+y+'" width="32" height="13" rx="4"/>'}).join('')+'</g>'+
+      '<path d="M210 130V24" class="l"/><path d="M210 130l52-90" class="d"/><path d="M210 82a48 48 0 0 1 24 7" class="a"/><text x="220" y="76" class="t">45°</text>'+
+      ''},
+    athero:{bg:'#4A1621',ac:'#FFB3A7',name:'Targeted Nanotherapy',sub:'Atherosclerosis',art:
+      '<circle cx="330" cy="70" r="52" class="a"/><path d="M290 100a52 52 0 0 0 72 4c-14-18-50-24-72-4z" class="f"/>'+
+      '<g class="s"><circle cx="210" cy="50" r="7"/><circle cx="240" cy="86" r="7"/><circle cx="180" cy="96" r="7"/></g>'+
+      '<path d="M210 43v-8M203 50h-8M240 79v-8M233 86h-8M180 89v-8M173 96h-8" class="a"/>'+
+      '<path d="M250 86c20 4 34 10 44 16" class="d"/>'},
+  msa:{bg:'#2E2652',ac:'#CFC2FF',name:'SynuSense',sub:'Neurodiagnostics',art:
+      '<path d="M130 70h40l10-24 14 52 12-40 10 20 12-8h40l10-30 14 60 12-44 10 22 12-8h44" class="d"/>'+
+      '<path d="M130 110h270" class="l"/><path d="M130 30h270" class="l"/>'},
+    hospital:{bg:'#1D2B38',ac:'#95D6EE',name:'Hospital Monitoring System',sub:'Requirements · integration · testing',art:
+      '<g class="f"><rect x="320" y="22" width="76" height="100" rx="4"/></g>'+
+      '<g class="a"><path d="M320 46h76M320 72h76M320 98h76"/><path d="M350 34h16M350 60h16M350 86h16M350 112h16"/></g>'+
+      '<g class="s"><circle cx="170" cy="40" r="7"/><circle cx="220" cy="96" r="7"/><circle cx="160" cy="110" r="7"/><circle cx="260" cy="50" r="7"/></g>'+
+      '<path d="M170 40l50 56-60 14M220 96l40-46M260 50l60 10M220 96l100 10" class="d"/>'},
+    energy:{bg:'#33270C',ac:'#FFCE55',name:'Eyes4Energy',sub:'Drone damage assessment',art:
+      '<path d="M310 40l60 40M370 40l-60 40" class="a"/><g class="a"><ellipse cx="310" cy="40" rx="18" ry="5"/><ellipse cx="370" cy="40" rx="18" ry="5"/><ellipse cx="310" cy="80" rx="18" ry="5"/><ellipse cx="370" cy="80" rx="18" ry="5"/></g>'+
+      '<rect x="328" y="50" width="24" height="20" rx="3" class="f"/>'+
+      '<path d="M340 72l-60 62M340 72l60 62" class="d"/><path d="M262 134h156" class="l"/>'+
+      '<g class="s"><circle cx="300" cy="126" r="4"/><circle cx="352" cy="118" r="4"/></g>'},
+    coral:{bg:'#0D4350',ac:'#FFA48F',name:'Bleaching Bad',sub:'Synthetic biology modelling',art:
+      '<path d="M330 136V96M330 96l-26-30M330 96l22-40M304 66l-14-30M304 66l14-26M352 56l-6-30M352 56l24-18M330 110l30-14" class="a"/>'+
+      '<g class="s"><circle cx="220" cy="40" r="5"/><circle cx="240" cy="70" r="3"/><circle cx="200" cy="90" r="4"/><circle cx="260" cy="30" r="3"/></g>'+
+      '<path d="M140 120h40l10-20h30l10 20h40" class="d"/>'}
+  };
+  document.querySelectorAll('[data-banner]').forEach(a=>{
+    const b=BAN[a.dataset.banner];if(!b)return;
+    const d=document.createElement('div');d.className='banner';d.setAttribute('aria-hidden','true');
+    d.style.setProperty('--b-bg',b.bg);d.style.setProperty('--b-ac',b.ac);
+    d.innerHTML='<div class="b-txt"><span class="b-sub">'+b.sub+'</span><span class="b-name">'+b.name+'</span></div><svg viewBox="100 0 320 140" preserveAspectRatio="xMaxYMid meet">'+b.art+'</svg>';
+    a.prepend(d);a.classList.add('has-cover');
+    const h=a.querySelector('h3');if(h&&h.textContent.trim()===b.name)h.classList.add('vh');
+  });
+  const ICONS={
+    magnet:'<path d="M6 3v8a6 6 0 0 0 12 0V3h-4v8a2 2 0 0 1-4 0V3z"/><path d="M6 7h4M14 7h4"/>',
+    compass:'<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
+    hip:'<circle cx="8" cy="7" r="3.2"/><path d="M10.2 9.4l5.8 9.6M13.5 20h6M4 4.5c1.5-2 6-2 7.5 0"/>',
+    wave:'<path d="M3 12h4l2-5 3 10 2-6 2 3h5"/>',
+    brain:'<path d="M12 5a3 3 0 0 0-5 2 3 3 0 0 0-2 5 3 3 0 0 0 3 5 3 3 0 0 0 4 1V5z"/><path d="M12 5a3 3 0 0 1 5 2 3 3 0 0 1 2 5 3 3 0 0 1-3 5 3 3 0 0 1-4 1"/>',
+    paper:'<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/>',
+    cells:'<circle cx="9" cy="10" r="5"/><circle cx="16.5" cy="15.5" r="4"/><circle cx="9" cy="10" r="1.4"/><circle cx="16.5" cy="15.5" r="1.1"/>',
+    flask:'<path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/>',
+    scope:'<path d="M9 3h4l-1 8h-2z"/><path d="M5 21h14M8 18h8M14 11a5 5 0 0 1-2 7"/>',
+    server:'<rect x="4" y="4" width="16" height="6" rx="1"/><rect x="4" y="14" width="16" height="6" rx="1"/><path d="M8 7h.01M8 17h.01"/>',
+    bolt:'<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>',
+    coral:'<path d="M12 21V11M12 11L8 7M12 11l4-5M8 7V3M16 6l3-2M12 15l-4-2M5 21h14"/>',
+    mega:'<path d="M3 10v4h3l8 5V5L6 10z"/><path d="M18 9a4 4 0 0 1 0 6"/>',
+    bar:'<rect x="6" y="3" width="12" height="18" rx="1"/><path d="M6 9h12M6 15h12M12 3v18"/>',
+    cal:'<rect x="4" y="6" width="16" height="14" rx="1"/><path d="M4 10h16M8 3v5M16 3v5"/>',
+    people:'<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 11a3 3 0 1 0 0-6M21 20a6 6 0 0 0-4-5.6"/>',
+    dance:'<circle cx="13" cy="4" r="2"/><path d="M13 6l-2 6 4 3-1 6M11 12l-5 2M13 8l5-2"/>',
+    plane:'<path d="M3 13l18-7-5 14-4-6z"/><path d="M12 14l9-8"/>',
+    peak:'<path d="M2 20l7-12 4 6 3-4 6 10z"/><path d="M7.5 11l1.5 1 1.5-1"/>',
+    flag:'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
+    seven:'<path d="M2 20l5-9 3 4 4-8 4 6 4 7z"/>',
+    run:'<circle cx="14" cy="4" r="2"/><path d="M8 21l3-6 3 2v4M11 15l1-6 4 3h3M12 9L8 10l-2 3"/>',
+    gecko:'<path d="M12 3c2 0 3 2 3 4s-1 4-1 6 2 3 2 5-2 3-4 3"/><path d="M10 8l-4-2M14 8l4-2M10 14l-4 2M14 14l4 2"/>',
+    mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/>',
+    pen:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/>'
+  };
+  document.querySelectorAll('[data-icon]').forEach(a=>{
+    const d=document.createElement('div');d.className='sym';d.setAttribute('aria-hidden','true');
+    d.innerHTML='<svg viewBox="0 0 24 24">'+(ICONS[a.dataset.icon]||'')+'</svg>';a.prepend(d);
+  });
+
+  // Header schematic: circuit traces into a chip, chip into a DNA helix
+  const cv=document.getElementById('art');
+  if(cv&&cv.getContext){
+    const ctx=cv.getContext('2d');
+    const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let W=0,H=0,traces=[],chip=null;const t0=performance.now();
+    const col=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+    function layout(){
+      const r=cv.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2);
+      W=r.width;H=r.height;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+      const ch=H*.5,cw=Math.max(44,ch*.8),cx=Math.max(120,W*.36);
+      chip={x:cx-cw/2,y:(H-ch)/2,w:cw,h:ch};
+      traces=[];const n=7;
+      for(let i=0;i<n;i++){
+        const y0=H*(i+.6)/(n+.2),yp=chip.y+ch*(i+1)/(n+1),dy=Math.abs(yp-y0);
+        const xa=Math.max(14,chip.x-26-dy-(i%3)*10);
+        const pts=[[6,y0],[xa,y0],[xa+dy,yp],[chip.x,yp]];
+        let len=0;for(let k=1;k<pts.length;k++)len+=Math.hypot(pts[k][0]-pts[k-1][0],pts[k][1]-pts[k-1][1]);
+        traces.push({pts,len,off:(i*0.37)%1});
+      }
+    }
+    function at(tr,f){let d=f*tr.len;for(let k=1;k<tr.pts.length;k++){const a=tr.pts[k-1],b=tr.pts[k],l=Math.hypot(b[0]-a[0],b[1]-a[1]);if(d<=l){const u=l?d/l:0;return[a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u]}d-=l}return tr.pts[tr.pts.length-1]}
+    function draw(now){
+      const t=((now||performance.now())-t0)/1000,ink=col('--ink'),acc=col('--accent'),acc2=col('--accent2'),rule=col('--rule'),paper=col('--paper'),muted=col('--muted');
+      ctx.clearRect(0,0,W,H);
+      ctx.lineWidth=1.5;ctx.strokeStyle=acc;ctx.globalAlpha=.55;
+      traces.forEach(tr=>{ctx.beginPath();tr.pts.forEach((p,k)=>k?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke()});
+      ctx.globalAlpha=1;
+      traces.forEach(tr=>{const p=tr.pts[0];ctx.beginPath();ctx.arc(p[0],p[1],3,0,7);ctx.fillStyle=paper;ctx.fill();ctx.strokeStyle=acc;ctx.stroke()});
+      if(!still)traces.forEach(tr=>{const p=at(tr,((t*.3+tr.off)%1));ctx.beginPath();ctx.arc(p[0],p[1],2.6,0,7);ctx.fillStyle=acc;ctx.fill()});
+      ctx.fillStyle=paper;ctx.strokeStyle=ink;ctx.lineWidth=1.5;ctx.fillRect(chip.x,chip.y,chip.w,chip.h);ctx.strokeRect(chip.x,chip.y,chip.w,chip.h);
+      ctx.beginPath();ctx.arc(chip.x+8,chip.y+8,2.2,0,7);ctx.fillStyle=ink;ctx.fill();
+      ctx.font='500 9px "IBM Plex Mono",monospace';ctx.fillStyle=muted;ctx.textAlign='center';ctx.fillText('MCU',chip.x+chip.w/2,chip.y+chip.h/2+3);
+      const hx0=chip.x+chip.w,hs=hx0+26,he=W-12,mid=H/2,amp=H*.26,ph=still?0:t*1.1,freq=2*Math.PI/150;
+      ctx.strokeStyle=ink;ctx.lineWidth=1.5;
+      for(let k=0;k<3;k++){const y=chip.y+chip.h*(k+1)/4;ctx.beginPath();ctx.moveTo(hx0,y);ctx.lineTo(hs,mid+(y-mid)*.3);ctx.stroke()}
+      for(let x=hs;x<=he;x+=13){
+        const a=Math.sin((x-hs)*freq+ph);
+        ctx.strokeStyle=rule;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x,mid+amp*a);ctx.lineTo(x,mid-amp*a);ctx.stroke();
+      }
+      [[1,acc],[-1,acc2]].forEach(([sg,c])=>{
+        ctx.strokeStyle=c;ctx.lineWidth=2.2;ctx.beginPath();
+        for(let x=hs;x<=he;x+=2){const y=mid+sg*amp*Math.sin((x-hs)*freq+ph);x===hs?ctx.moveTo(x,y):ctx.lineTo(x,y)}
+        ctx.stroke();
+      });
+      if(!still)requestAnimationFrame(draw);
+    }
+    layout();requestAnimationFrame(draw);
+    const redraw=()=>{if(still)requestAnimationFrame(draw)};
+    addEventListener('resize',()=>{layout();redraw()});
+    try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',redraw)}catch(e){}
+    new MutationObserver(redraw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(redraw);
+  }
+
+
+  // Click a gallery image to view it full size
+  const lb=document.createElement('div');lb.className='lb';lb.hidden=true;lb.setAttribute('role','dialog');lb.setAttribute('aria-label','Image viewer');
+  lb.innerHTML='<button type="button">Close</button><img alt=""><p></p>';document.body.appendChild(lb);
+  const closeLb=()=>{lb.hidden=true};
+  lb.addEventListener('click',closeLb);addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+  document.querySelectorAll('.gallery img').forEach(im=>{im.tabIndex=0;
+    const open=()=>{const i=lb.querySelector('img');i.src=im.src;i.alt=im.alt;const c=im.closest('figure').querySelector('figcaption');lb.querySelector('p').textContent=c?c.textContent:'';lb.hidden=false;lb.querySelector('button').focus()};
+    im.addEventListener('click',open);im.addEventListener('keydown',e=>{if(e.key==='Enter')open()});
+  });
+  show((location.hash||'').slice(1),false);
+  window.addEventListener('hashchange',()=>show(location.hash.slice(1),false));
+  document.querySelectorAll('.copy').forEach(btn=>btn.addEventListener('click',()=>{
+    const el=document.getElementById(btn.dataset.copy);const t=el.textContent;
+    const done=()=>{btn.textContent='Copied';setTimeout(()=>btn.textContent='Copy',1500)};
+    const sel=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected';setTimeout(()=>btn.textContent='Copy',1500)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,sel)}else sel();
+  }));
+})();
+</script>
+
+</body>
+</html>
