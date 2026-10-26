@@ -212,6 +212,8 @@ ol.steps{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:8px;
 .facts-grid .fact.big p{opacity:.85}
 .facts-grid .fact.big .sym{background:transparent;border-color:color-mix(in srgb,var(--on-accent) 40%,transparent);color:var(--on-accent)}
 @media (max-width:720px){.facts-grid{grid-template-columns:1fr}}
+#funfacts .lead{max-width:none}
+@media (max-width:520px){.contact-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}.contact-row>span:first-child{flex:0 0 100%}.contact-row>code,.contact-row>a{flex:1 1 auto;min-width:0}.contact-row>span:last-child:empty{display:none}.contact-row .copy{flex:none}}
 </style>
 </head>
 <body>
@@ -222,7 +224,7 @@ ol.steps{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:8px;
     <div class="tb-name">
       <h1>Jiya Bhogal</h1>
       <p>Mechatronics and Biomedical Engineering student at McMaster University, working where engineering, computation and biomedical research meet.</p>
-      <div class="tb-links"><a href="https://www.linkedin.com/in/jiyabhogal" target="_blank" rel="noopener">LinkedIn ↗</a><a href="#contact" onclick="event.preventDefault();document.querySelector('nav button[data-target=contact]').click()">Contact</a></div>
+      <div class="tb-links"><a href="https://www.linkedin.com/in/jiyabhogal" target="_blank" rel="noopener">LinkedIn ↗</a><a href="#contact">Contact</a></div>
     </div>
     <div class="tb-meta" aria-label="Summary">
       <div><span>Program</span>iBioMed · Mechatronics</div>
@@ -769,7 +771,7 @@ ol.steps{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:8px;
       if(b.dataset.target===id){b.setAttribute('aria-current','page');b.scrollIntoView({block:'nearest',inline:'nearest'});}
       else b.removeAttribute('aria-current');
     });
-    if(push){try{history.replaceState(null,'','#'+id)}catch(e){} window.scrollTo({top:0});}
+    if(push){try{history.replaceState(null,'','#'+id)}catch(e){} const n=document.querySelector('nav');const y=n.getBoundingClientRect().top+window.scrollY-8;if(window.scrollY>y||push==='jump')window.scrollTo({top:y});}
   }
   // Project banners: each a deliberate single-look block (own colours, both themes)
   const BAN={
@@ -923,7 +925,7 @@ ol.steps{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:8px;
     im.addEventListener('click',open);im.addEventListener('keydown',e=>{if(e.key==='Enter')open()});
   });
   show((location.hash||'').slice(1),false);
-  window.addEventListener('hashchange',()=>show(location.hash.slice(1),false));
+  window.addEventListener('hashchange',()=>show(location.hash.slice(1),'jump'));
   document.querySelectorAll('.copy').forEach(btn=>btn.addEventListener('click',()=>{
     const el=document.getElementById(btn.dataset.copy);const t=el.textContent;
     const done=()=>{btn.textContent='Copied';setTimeout(()=>btn.textContent='Copy',1500)};
