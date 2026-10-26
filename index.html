@@ -1016,12 +1016,12 @@ body.side-collapsed .content{padding-top:72px}
         sensors.push({x:sx,y,label:SENS[i],kind:i%4});
         const yp=chip.y+ch*(i+1)/(n+1);
         const x1=sx+(narrow?26:46)+((i*37)%3)*14, x2=chip.x-30-Math.abs(i-(n-1)/2)*9;
-        const pts=[[sx+8,y],[x1,y],[x1+Math.min(18,Math.abs(yp-y)*.4),y+(yp-y)*.4],[x2-Math.abs(yp-y)*.6,y+(yp-y)*.4],[x2,yp],[chip.x,yp]];
+        const nx=chip.x+chip.w*.5,my=H/2;const pts=[[sx+8,y],[x1,y],[x1+Math.min(18,Math.abs(yp-y)*.4),y+(yp-y)*.4],[x2-Math.abs(yp-y)*.6,y+(yp-y)*.4],[x2,yp],[chip.x,yp],[nx-14,my+(yp-my)*.25],[nx,my]];
         traces.push({pts,len:pathLen(pts),off:(i*0.29)%1,spd:.22+((i*13)%5)*.03});
       }
       // decorative branches ending in vias
       for(let i=0;i<n-1;i++){const tr=traces[i],p=tr.pts[1];const len=18+((i*7)%3)*10;deco.push([[p[0]-10,p[1]],[p[0]-10+len*.5,p[1]+(i%2?-1:1)*len*.5]]);}
-      dust=[];const hs=chip.x+chip.w+70;for(let i=0;i<(narrow?10:24);i++)dust.push({x:hs+Math.random()*(W-hs),y:Math.random()*H,r:.6+Math.random()*1.4,v:.08+Math.random()*.18,ph:Math.random()*6});
+      dust=[];const hs=chip.x+chip.w*.5+70;for(let i=0;i<(narrow?10:24);i++)dust.push({x:hs+Math.random()*(W-hs),y:Math.random()*H,r:.6+Math.random()*1.4,v:.08+Math.random()*.18,ph:Math.random()*6});
     }
     function sensorGlyph(s,acc,ink,paper){
       ctx.lineWidth=1.4;ctx.strokeStyle=acc;ctx.fillStyle=paper;
@@ -1055,20 +1055,15 @@ body.side-collapsed .content{padding-top:72px}
       ctx.globalAlpha=1;
       // sensors
       ctx.font='500 8px "IBM Plex Mono",monospace';ctx.textAlign='left';
-      sensors.forEach(s=>{sensorGlyph(s,acc,ink,paper);if(W>=560){ctx.fillStyle=muted;ctx.textAlign='right';ctx.fillText(s.label,s.x-12,s.y+3);}});
+      sensors.forEach(s=>sensorGlyph(s,acc,ink,paper));
       // chip
       flash=Math.max(0,flash-.05);if(arriving)flash=1;
-      const c=chip,pins=6;
-      ctx.strokeStyle=ink;ctx.lineWidth=1.3;
-      for(let k=1;k<=pins;k++){const x=c.x+c.w*k/(pins+1);ctx.beginPath();ctx.moveTo(x,c.y-6);ctx.lineTo(x,c.y);ctx.moveTo(x,c.y+c.h);ctx.lineTo(x,c.y+c.h+6);ctx.stroke();}
-      ctx.fillStyle=paper;ctx.lineWidth=1.6;ctx.beginPath();ctx.roundRect?ctx.roundRect(c.x,c.y,c.w,c.h,4):ctx.rect(c.x,c.y,c.w,c.h);ctx.fill();ctx.stroke();
-      const dx=c.x+c.w*.22,dy=c.y+c.h*.22,dw=c.w*.56,dh=c.h*.56;
-      ctx.globalAlpha=.25+.55*flash;ctx.fillStyle=fills[0];ctx.fillRect(dx,dy,dw,dh);ctx.globalAlpha=1;
-      ctx.strokeStyle=acc;ctx.lineWidth=1;ctx.strokeRect(dx,dy,dw,dh);
-      ctx.beginPath();ctx.arc(c.x+7,c.y+7,2,0,7);ctx.fillStyle=ink;ctx.fill();
-      ctx.font='600 9px "IBM Plex Mono",monospace';ctx.fillStyle=ink;ctx.textAlign='center';ctx.fillText('MCU',c.x+c.w/2,c.y+c.h/2+3);
+      const c=chip,nx=c.x+c.w*.5,ny=H/2;
+      ctx.globalAlpha=.25+.45*flash;ctx.fillStyle=fills[0];ctx.beginPath();ctx.arc(nx,ny,11+5*flash,0,7);ctx.fill();ctx.globalAlpha=1;
+      ctx.fillStyle=paper;ctx.strokeStyle=acc;ctx.lineWidth=1.8;ctx.beginPath();ctx.arc(nx,ny,6,0,7);ctx.fill();ctx.stroke();
+      ctx.fillStyle=acc;ctx.beginPath();ctx.arc(nx,ny,2.6,0,7);ctx.fill();
       // output signal morphing into helix
-      const hx0=c.x+c.w, hs=hx0+14, he=W-14, mid=H/2, amp=H*.29, ph=still?0:t*1.15, freq=2*Math.PI/(W<560?110:150), ramp=W<560?50:90;
+      const hx0=nx+6, hs=hx0+4, he=W-14, mid=H/2, amp=H*.29, ph=still?0:t*1.15, freq=2*Math.PI/(W<560?110:150), ramp=W<560?50:90;
       const A=x=>amp*Math.min(1,Math.max(0,(x-hs)/ramp));
       // base pairs
       const step=W<560?10:11;
@@ -1092,9 +1087,6 @@ body.side-collapsed .content{padding-top:72px}
         ctx.globalAlpha=1;
       };
       strand(1,acc,false);strand(-1,acc2,false);strand(1,acc,true);strand(-1,acc2,true);
-      // bus from chip into the helix start
-      ctx.strokeStyle=ink;ctx.lineWidth=1.3;
-      for(let k=0;k<3;k++){const y=c.y+c.h*(k+1)/4;ctx.beginPath();ctx.moveTo(hx0,y);ctx.lineTo(hs,mid+(y-mid)*.15);ctx.stroke();}
       // nucleotide beads
       for(let x=hs+ramp;x<=he;x+=step*2){
         [[1,acc],[-1,acc2]].forEach(([sg,cc])=>{const th=(x-hs)*freq+ph,y=mid+sg*A(x)*Math.sin(th),z=sg*Math.cos(th);
