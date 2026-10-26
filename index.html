@@ -340,6 +340,11 @@ body.side-collapsed .content{padding-top:72px}
 .tb-art{margin-bottom:8px}
 .tb-art canvas{height:200px}
 @media (max-width:560px){.tb-art canvas{height:150px}}
+a.art-pill{text-decoration:none;transition:border-color .15s,transform .15s}
+a.art-pill b{font-weight:500;color:var(--muted);transition:transform .15s}
+a.art-pill:hover{border-color:var(--accent)}
+a.art-pill:hover b{transform:translateX(2px);color:var(--accent)}
+.hero h1{margin-bottom:-4px}
 </style>
 </head>
 <body>
@@ -366,10 +371,10 @@ body.side-collapsed .content{padding-top:72px}
   <div class="content">
   <main>
     <section class="sheet" id="about" data-label="Home">
-      <div class="tb-art"><div class="art-labels"><span class="art-pill tron"><i></i>Mechatronics<small>sensing &amp; signals</small></span><span class="art-pill bio"><i></i>Biomedical<small>biology &amp; health</small></span></div><canvas id="art" aria-hidden="true"></canvas></div>
+      <div class="tb-art"><div class="art-labels"><a class="art-pill tron" href="#projects"><i></i>Mechatronics<small>sensing &amp; signals</small><b aria-hidden="true">→</b></a><a class="art-pill bio" href="#biomed"><i></i>Biomedical<small>biology &amp; health</small><b aria-hidden="true">→</b></a></div><canvas id="art" aria-hidden="true"></canvas></div>
       <div class="hero">
-        <p class="eyebrow">McMaster University · iBioMed, Mechatronics · Class of 2029</p>
         <h1>Hi, I'm Jiya.</h1>
+        <p class="eyebrow">McMaster University · iBioMed, Mechatronics · Class of 2029</p>
         <p class="hero-lead">I'm a third-year Mechatronics and Biomedical Engineering student who builds sensing systems, medical devices and simulations. My work runs from HIV research in Durban to drone systems and assistive wearables, and I'm looking for a Winter or Summer 2027 co-op in biomedical engineering or aerospace.</p>
         <div class="cta">
           <a class="btn primary" href="#biomed">View projects</a>
